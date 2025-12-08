@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Sistema Guaraní UNS</title>
-<link rel="stylesheet" href="style.css">
-<script>
-function login() {
-    let user = document.getElementById("user").value;
-    let pass = document.getElementById("pass").value;
-
-    if (user === "jeremiasvisconti" && pass === "75174637") {
-        sessionStorage.setItem("usuario", user);
-        window.location.href = "panel.html";
-    } else {
-        alert("Usuario o contraseña incorrectos");
-    }
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIU Guaraní - Ingreso</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="login-container">
-    <h2>Acceso al Sistema</h2>
+    <div class="header">
+        <img src="https://g3w.uns.edu.ar/Guarani3w/img/logo_uns.png" class="logo">
+    </div>
 
-    <input placeholder="Usuario" id="user" type="text">
-    <input placeholder="Contraseña" id="pass" type="password">
+    <div class="container">
 
-    <button onclick="login()">Ingresar</button>
-</div>
+        <h1>Ingresá tus datos</h1>
+
+        <label>Usuario</label>
+        <input type="text" placeholder="">
+
+        <label>Contraseña</label>
+        <input type="password" placeholder="">
+
+        <button class="btn">Ingresar</button>
+
+        <a class="forgot" href="#">¿Olvidaste tu usuario o contraseña?</a>
+
+        <h2>SIU Guaraní</h2>
+
+        <p>Con este sistema podés entre otras opciones:</p>
+
+        <b>Si sos alumno:</b>
+        <ul>
+            <li>Inscribirte a cursados y exámenes.</li>
+            <li>Consultar el plan de estudios de tu carrera y tu historia académica.</li>
+            <li>Solicitar certificaciones.</li>
+        </ul>
+
+        <b>Si sos docente:</b>
+        <ul>
+            <li>Consultar tus comisiones y mesas de examen y los alumnos inscriptos.</li>
+            <li>Cargar e imprimir tus Actas Cursado y Promoción y Examen.</li>
+            <li>Obtener listados en formato pdf y xls.</li>
+        </ul>
+
+        <p><b>Ingresá tu usuario y contraseña para iniciar sesión en el sistema.</b></p>
+
+        <p class="recorda">
+            <b>Recordá:</b> Tus trámites terminan cuando cerrás tu sesión.<br>
+            Para esto, usá la opción "Cerrar Sesión" de tu Menú de Sesión en la parte superior derecha de la página.
+        </p>
+
+    </div>
 
 </body>
 </html>

@@ -182,7 +182,7 @@ select{
 
   <div class="topbar-left">
 
-    <!-- TU LOGO REAL (PNG) -->
+    <!-- TU LOGO REAL -->
     <img src="logo-uns.png" alt="UNS" class="logo-img">
 
     <!-- home button -->
@@ -224,9 +224,14 @@ select{
   <div class="menu-item" onclick="toggleSubmenu('subCursadas')">
     Cursadas <span class="submenu-arrow">▾</span>
   </div>
+
   <div id="subCursadas" class="submenu">
+
     <div class="submenu-item">Inscripción</div>
-    <div class="submenu-item">Seguimiento</div>
+
+    <!-- ✅ SOLO EDITÉ ESTA LÍNEA -->
+    <div class="submenu-item" onclick="location.href='cursadas.html'">Seguimiento</div>
+
   </div>
 
   <div class="menu-item" onclick="toggleSubmenu('subExamenes')">

@@ -16,7 +16,7 @@ body {
     color: #333;
 }
 
-/* --- Barra superior --- */
+/* --- Barra superior con logo y menú --- */
 .topbar {
     background: #ffffff;
     padding: 10px 14px;
@@ -26,155 +26,127 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-weight: bold;
 }
 
-/* Logo y menu */
-.logo-uns { height: 36px; margin-left: 6px; }
+.logo-uns { height: 34px; }
 .menu-icon { font-size: 26px; cursor: pointer; padding: 6px 8px; color: #444; }
 
-/* --- Caja del login (tarjeta) --- */
+/* --- Caja del login más chica y pegada a la izquierda --- */
 .login-box {
-    width: 92%;
-    max-width: 640px;           /* caja más ancha como en la captura */
+    width: 78%;                /* MÁS ANGOSTA como en tu captura */
+    max-width: 340px;          /* Ajuste perfecto */
     background: #ffffff;
-    padding: 26px 28px;         /* más espacio interior */
+    padding: 22px 20px;
     border-radius: 8px;
-    margin: 24px auto;
+    margin: 22px 0 0 12px;     /* PEGADO A LA IZQUIERDA */
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* Título */
+/* Título pequeño como en SIU */
 .login-title {
-    font-size: 28px;            /* título grande como en original */
-    text-align: left;           /* en la captura el título queda a la izquierda */
-    margin: 0 0 18px 0;
+    font-size: 22px;
+    text-align: left;
     color: #666;
+    margin-bottom: 14px;
     font-weight: 600;
 }
 
-/* Labels (mantener estilo limpio) */
+/* Labels */
 label {
     display: block;
-    font-size: 15px;
-    color: #333;
-    margin-bottom: 6px;
+    font-size: 14px;
+    margin-bottom: 4px;
 }
 
-/* Inputs estilo SIU: más angostos visualmente y alineados a la izquierda dentro de la caja */
-.input-row {
-    display: block;
-    width: 100%;
-    margin-bottom: 14px;
-}
-
-/* Inputs */
+/* Inputs MÁS CHICOS y al costado */
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    height: 44px;               /* altura igualada a la original */
-    padding: 10px 12px;
-    font-size: 15px;
-    border: 1px solid #d1d1d1;  /* borde más claro */
+    height: 38px;              /* MÁS BAJITOS */
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #cfcfcf;
     border-radius: 6px;
-    background: #fff;
-    transition: border-color .15s, box-shadow .15s;
+    transition: 0.15s;
 }
 
-/* Focus (resplandor azul como en la captura) */
-input[type="text"]:focus,
-input[type="password"]:focus {
+input:focus {
     outline: none;
-    border-color: #7fc0ee; /* borde celeste claro */
-    box-shadow: 0 0 6px rgba(35,137,221,0.18);
+    border-color: #7fc0ee;
+    box-shadow: 0 0 4px rgba(35,137,221,0.20);
 }
 
-/* Botón INGRESAR estilo SIU */
+/* Botón estilo SIU más finito */
 .btn-ingresar {
-    display: inline-block;
     width: 100%;
-    height: 48px;
-    margin-top: 6px;
-    background: linear-gradient(#19aee7, #0d90bd); /* degradado similar */
-    color: #fff;
-    font-weight: 700;
-    font-size: 18px;
-    border: none;
+    height: 42px;
+    margin-top: 10px;
+    background: linear-gradient(#19aee7, #0d90bd);
     border-radius: 8px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    box-shadow: inset 0 -3px 0 rgba(0,0,0,0.08);
 }
 
-/* Hover más oscuro */
 .btn-ingresar:hover {
     background: linear-gradient(#17a0d0, #0b82a8);
 }
 
-/* Link de olvido */
+/* Link */
 .forgot {
     display: block;
+    margin-top: 10px;
     text-align: center;
-    margin-top: 12px;
     color: #0b94c6;
-    text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
 }
 
-/* Section title y texto */
+/* Sección inferior */
 .section-title {
-    font-size: 26px;
+    font-size: 24px;
     margin-top: 18px;
     font-weight: bold;
     color: #555;
-    padding-left: 4px;
+    padding-left: 12px;
 }
 
 .text-block {
-    padding: 0 8px 30px 8px;
+    padding: 0 14px 30px 14px;
     color: #333;
-    font-size: 16px;
-    line-height: 1.45;
-}
-
-/* Ajustes responsive */
-@media (max-width: 480px) {
-    .login-box { padding: 20px; margin: 18px; }
-    .login-title { font-size: 24px; }
-    .btn-ingresar { font-size: 17px; height: 46px; }
+    font-size: 15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BARRA SUPERIOR: logo a la izquierda, título en centro-izquierda, tres rayitas derecha -->
+<!-- Barra superior -->
 <div class="topbar">
-    <div style="display:flex; align-items:center; gap:12px;">
+    <div style="display:flex; align-items:center; gap: 12px;">
         <img src="logo-uns.png" class="logo-uns" alt="UNS">
         <div style="font-weight:600; color:#444;">SIU Guaraní</div>
     </div>
     <div class="menu-icon">&#9776;</div>
 </div>
 
-<!-- TARJETA LOGIN -->
+<!-- Caja login más chica y pegada al lado -->
 <div class="login-box">
     <div class="login-title">Ingresá tus datos</div>
 
     <label for="user">Usuario</label>
-    <div class="input-row">
-        <input type="text" id="user" placeholder="">
-    </div>
+    <input type="text" id="user">
 
     <label for="pass">Contraseña</label>
-    <div class="input-row">
-        <input type="password" id="pass" placeholder="">
-    </div>
+    <input type="password" id="pass">
 
     <button class="btn-ingresar" onclick="login()">Ingresar</button>
 
-    <a class="forgot" href="#" tabindex="0">¿Olvidaste tu usuario o contraseña?</a>
+    <a class="forgot" href="#">¿Olvidaste tu usuario o contraseña?</a>
 </div>
 
+<!-- Texto abajo -->
 <div class="section-title">SIU Guaraní</div>
 
 <div class="text-block">
@@ -189,13 +161,12 @@ input[type="password"]:focus {
 
     <strong>Si sos docente:</strong>
     <ul>
-        <li>Consultar tus comisiones y mesas de examen y los alumnos inscriptos.</li>
-        <li>Cargar e imprimir tus Actas Cursado y Promoción y Examen.</li>
-        <li>Obtener listados en formato pdf y xls.</li>
+        <li>Consultar tus comisiones y mesas de examen y alumnos inscriptos.</li>
+        <li>Cargar Actas Cursado y Examen.</li>
+        <li>Obtener listados en pdf y xls.</li>
     </ul>
 
     <p><strong>Ingresá tu usuario y contraseña para iniciar sesión en el sistema.</strong></p>
-    <p><strong>Recordá:</strong> Tus trámites terminan cuando cerrás tu sesión.</p>
 </div>
 
 <script>
@@ -204,7 +175,7 @@ function login() {
     let p = document.getElementById("pass").value;
 
     if (u === "jeremiasvisconti" && p === "75174637") {
-        window.location.href = "panel.html"; 
+        window.location.href = "panel.html";
     } else {
         alert("Usuario o contraseña incorrectos");
     }

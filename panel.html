@@ -236,14 +236,73 @@
         <div class="submenu-item">Consulta / Anulación</div>
     </div>
 
-    <!-- RESTO (SIN CAMBIAR, como pediste) -->
-    <div class="menu-item">Ingreso<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Matrícula<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Consultas<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Servicios<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Encuestas<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Egresados<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Moodle<span class="submenu-arrow">▾</span></div>
+    <!-- INGRESO -->
+    <div class="menu-item" onclick="toggleSubmenu('subIngreso')">
+        Ingreso <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subIngreso">
+        <div class="submenu-item">Requisitos</div>
+        <div class="submenu-item">Documentación</div>
+        <div class="submenu-item">Estado de Mi Ingreso</div>
+    </div>
+
+    <!-- MATRÍCULA -->
+    <div class="menu-item" onclick="toggleSubmenu('subMatricula')">
+        Matrícula <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subMatricula">
+        <div class="submenu-item">Generar Matrícula</div>
+        <div class="submenu-item">Pagos / Aranceles</div>
+        <div class="submenu-item">Historial de Matrículas</div>
+    </div>
+
+    <!-- CONSULTAS -->
+    <div class="menu-item" onclick="toggleSubmenu('subConsultas')">
+        Consultas <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subConsultas">
+        <div class="submenu-item">Consultar Alumno</div>
+        <div class="submenu-item">Estado Académico</div>
+        <div class="submenu-item">Consulta de Plan</div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <div class="menu-item" onclick="toggleSubmenu('subServicios')">
+        Servicios <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subServicios">
+        <div class="submenu-item">Becas</div>
+        <div class="submenu-item">Comedor</div>
+        <div class="submenu-item">Biblioteca</div>
+    </div>
+
+    <!-- ENCUESTAS -->
+    <div class="menu-item" onclick="toggleSubmenu('subEncuestas')">
+        Encuestas <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subEncuestas">
+        <div class="submenu-item">Encuestas Vigentes</div>
+        <div class="submenu-item">Realizadas</div>
+    </div>
+
+    <!-- EGRESADOS -->
+    <div class="menu-item" onclick="toggleSubmenu('subEgresados')">
+        Egresados <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subEgresados">
+        <div class="submenu-item">Solicitar Título</div>
+        <div class="submenu-item">Seguimiento de Trámite</div>
+        <div class="submenu-item">Información del Egresado</div>
+    </div>
+
+    <!-- MOODLE -->
+    <div class="menu-item" onclick="toggleSubmenu('subMoodle')">
+        Moodle <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subMoodle">
+        <div class="submenu-item">Acceder a Moodle</div>
+        <div class="submenu-item">Mis Cursos</div>
+    </div>
 </div>
 
 <!-- CONTENIDO -->

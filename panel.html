@@ -1,226 +1,378 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SIU Guaraní — Panel Académico</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Guaraní - Panel</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #e5e5e5;
+        color: #444;
+    }
+
+    /* BARRA SUPERIOR */
+    .topbar {
+        width: 100%;
+        background: #ffffff;
+        height: 55px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 15px;
+        border-bottom: 1px solid #cfcfcf;
+        position: relative;
+    }
+
+    .topbar button {
+        background: #f2f2f2;
+        border: 1px solid #c7c7c7;
+        padding: 6px 10px;
+        margin-left: 7px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .icon {
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+    }
+
+    /* MENU SUPERIOR */
+    .menu {
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 1px solid #cfcfcf;
+        display: none;
+        flex-direction: column;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        z-index: 50;
+    }
+
+    .menu-item {
+        padding: 14px 18px;
+        font-size: 17px;
+        color: #444;
+        border-bottom: 1px solid #e5e5e5;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .menu-item:hover {
+        background: #f2f2f2;
+    }
+
+    .submenu {
+        display: none;
+        flex-direction: column;
+        background: #fafafa;
+        border-left: 3px solid #d0d0d0;
+    }
+
+    .submenu-item {
+        padding: 12px 30px;
+        font-size: 15px;
+        border-bottom: 1px solid #e5e5e5;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .submenu-item:hover {
+        background: #efefef;
+    }
+
+    .submenu-arrow {
+        font-size: 15px;
+        margin-left: auto;
+    }
+
+    /* CONTENEDOR */
+    .container {
+        width: 92%;
+        max-width: 750px;
+        margin: 18px auto;
+    }
+
+    h2 {
+        color: #006bb3;
+        font-size: 24px;
+        margin-bottom: 15px;
+        font-weight: normal;
+    }
+
+    .card {
+        background: #ffffff;
+        border: 1px solid #d0d0d0;
+        padding: 18px;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    /* BLOQUE CELESTE */
+    .header-box {
+        background: #eef3f8;
+        border: 1px solid #d4dce4;
+        padding: 10px 12px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .header-box-title {
+        color: #3a7db7;
+        font-size: 14px;
+        margin-bottom: 6px;
+        font-weight: bold;
+    }
+
+    .red {
+        color: #d10000;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .title {
+        font-weight: bold;
+        color: #666;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        font-size: 15px;
+    }
+
+    select {
+        width: 100%;
+        padding: 6px;
+        border: 1px solid #bfbfbf;
+        border-radius: 3px;
+        font-size: 14px;
+        color: #444;
+        background: #fff;
+    }
+
+    ul {
+        padding-left: 20px;
+        margin-top: 5px;
+    }
+
+    ul li {
+        margin-bottom: 5px;
+    }
+
+    .exam-msg {
+        background: #eef5fb;
+        border-top: 1px solid #c9dae7;
+        padding: 10px 12px;
+        color: #0b6fb8;
+        font-size: 14px;
+        margin-top: 6px;
+        line-height: 1.4;
+    }
+</style>
 </head>
 
 <body>
 
-<!-- =========================
-       HEADER (ICONOS NUEVOS)
-========================= -->
-<header class="header">
-  <div class="header-inner">
+<!-- BARRA SUPERIOR -->
+<div class="topbar">
+    <button>
+        <img class="icon" src="data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 24 24'>
+        <path d='M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z'/>
+        </svg>" />
+    </button>
 
-    <!-- Logo -->
-    <div class="logo">
-      <span class="logo-text">SIU Guaraní<span class="logo-small"> — UNS</span></span>
+    <button>
+        <img class="icon" src="data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 24 24'>
+        <path d='M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8l-10 7z'/>
+        </svg>" />
+        0
+    </button>
+
+    <button id="menuBtn">
+        <img class="icon" src="data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 24 24'>
+        <path d='M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z'/>
+        </svg>" />
+    </button>
+</div>
+
+<!-- MENU DESPLEGABLE -->
+<div class="menu" id="menu">
+
+    <!-- CURSADAS -->
+    <div class="menu-item" onclick="toggleSubmenu('subCursadas')">
+        Cursadas <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subCursadas">
+        <div class="submenu-item">Inscripción</div>
+        <div class="submenu-item">Seguimiento</div>
     </div>
 
-    <!-- NAV -->
-    <nav class="main-nav" aria-label="main navigation">
-      <ul>
-
-        <li class="nav-item home"><a href="#">Inicio</a></li>
-
-        <li class="nav-item has-sub">
-          <button class="sub-btn">Cursadas ▾</button>
-          <ul class="sub">
-            <li><a href="#">Ver cursadas</a></li>
-            <li><a href="#">Inscripción a materias</a></li>
-            <li><a href="#">Historial</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item has-sub">
-          <button class="sub-btn">Exámenes ▾</button>
-          <ul class="sub">
-            <li><a href="#">Inscripción a exámenes</a></li>
-            <li><a href="#">Turnos</a></li>
-            <li><a href="#">Actas</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item has-sub">
-          <button class="sub-btn">Certificaciones ▾</button>
-          <ul class="sub">
-            <li><a href="certificado_visconti.pdf" target="_blank">Certificado alumno regular</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item has-sub active">
-          <button class="sub-btn">Consultas ▾</button>
-          <ul class="sub">
-            <li><a href="#">Historia Académica</a></li>
-            <li><a href="#">Reportes</a></li>
-            <li><a href="#">Trámites</a></li>
-            <li><a href="#">Solicitud de título</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item logout"><a href="index.html">Salir</a></li>
-
-      </ul>
-    </nav>
-
-    <!-- =========================
-           ICONOS DEL SIU GRANDES
-    ========================== -->
-    <div style="display:flex;gap:10px;margin-left:auto;">
-
-      <!-- Persona -->
-      <button style="background:#f2f2f2;border:1px solid #c7c7c7;border-radius:6px;padding:6px 10px;">
-        <svg width="28" height="28" fill="#000" viewBox="0 0 24 24">
-          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
-        </svg>
-      </button>
-
-      <!-- Mensajes -->
-      <button style="background:#f2f2f2;border:1px solid #c7c7c7;border-radius:6px;padding:6px 12px;display:flex;align-items:center;gap:4px;">
-        <svg width="28" height="28" fill="#000" viewBox="0 0 24 24">
-          <path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8l-10 7z"/>
-        </svg>
-        <span style="color:#1690c7;font-weight:bold;">0</span>
-      </button>
-
-      <!-- Menú hamburguesa -->
-      <button style="background:#f2f2f2;border:1px solid #c7c7c7;border-radius:6px;padding:6px 10px;">
-        <svg width="28" height="28" fill="#000" viewBox="0 0 24 24">
-          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
-        </svg>
-      </button>
-
+    <!-- EXÁMENES -->
+    <div class="menu-item" onclick="toggleSubmenu('subExamenes')">
+        Exámenes <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subExamenes">
+        <div class="submenu-item">Inscripción a Exámenes</div>
+        <div class="submenu-item">Mis Mesas</div>
+        <div class="submenu-item">Historial</div>
     </div>
 
-  </div>
-</header>
-
-<!-- =========================
-       CONTENIDO PRINCIPAL
-========================= -->
-<div class="page">
-
-  <!-- SIDEBAR IZQUIERDO -->
-  <aside class="sidebar-left">
-    <div class="box">
-      <h3>Filtrar cursadas</h3>
-
-      <div class="filter-block">
-        <label><input type="checkbox" checked data-filter="aprobada"> Aprobada</label>
-        <label><input type="checkbox" checked data-filter="en-curso"> En curso</label>
-        <label><input type="checkbox" checked data-filter="desaprobada"> Desaprobada</label>
-      </div>
-
-      <hr>
-
-      <h3>Filtrar exámenes</h3>
-      <label><input type="checkbox" checked data-filter="exam-aprobado"> Aprobado</label>
-      <label><input type="checkbox" checked data-filter="exam-desap"> Desaprobado</label>
+    <!-- CERTIFICACIONES -->
+    <div class="menu-item" onclick="toggleSubmenu('subCertificados')">
+        Certificaciones <span class="submenu-arrow">▾</span>
     </div>
-  </aside>
 
-  <!-- MAIN -->
-  <main class="main">
-    <div class="panel box">
-
-      <h1>Historia Académica</h1>
-
-      <!-- DATOS DEL ALUMNO -->
-      <div class="box" style="margin:12px 0;">
-        <h4 style="color:#0b5d7a;margin-bottom:6px;">Datos del Alumno</h4>
-        <div style="font-size:15px;">
-          <div><strong>Nombre:</strong> Jeremías Santino Visconti</div>
-          <div><strong>DNI:</strong> 47.638.194</div>
-          <div><strong>Carrera:</strong> Ingeniería Civil</div>
-          <div><strong>Ingreso:</strong> 2024</div>
+    <div class="submenu" id="subCertificados">
+        <div class="submenu-item" onclick="window.open('certificado_visconti.pdf', '_blank')">
+            Solicitud de Certificados
         </div>
-      </div>
+        <div class="submenu-item">Consulta / Anulación</div>
+    </div>
 
-      <!-- MATERIAS 2024 (Ciencias básicas) -->
-      <div class="year-block" data-year="2024">
-        <div class="year-bar">2024</div>
+    <!-- INGRESO -->
+    <div class="menu-item" onclick="toggleSubmenu('subIngreso')">
+        Ingreso <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subIngreso">
+        <div class="submenu-item">Requisitos</div>
+        <div class="submenu-item">Documentación</div>
+        <div class="submenu-item">Estado de Mi Ingreso</div>
+    </div>
 
-        <div class="subject aprobada"><div class="subject-title">Matemática I</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+    <!-- MATRÍCULA -->
+    <div class="menu-item" onclick="toggleSubmenu('subMatricula')">
+        Matrícula <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subMatricula">
+        <div class="submenu-item">Generar Matrícula</div>
+        <div class="submenu-item">Pagos / Aranceles</div>
+        <div class="submenu-item">Historial de Matrículas</div>
+    </div>
 
-        <div class="subject aprobada"><div class="subject-title">Física I</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+    <!-- CONSULTAS -->
+    <div class="menu-item" onclick="toggleSubmenu('subConsultas')">
+        Consultas <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subConsultas">
+        <div class="submenu-item">Consultar Alumno</div>
+        <div class="submenu-item">Estado Académico</div>
+        <div class="submenu-item">Consulta de Plan</div>
+    </div>
 
-        <div class="subject aprobada"><div class="subject-title">Álgebra</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+    <!-- SERVICIOS -->
+    <div class="menu-item" onclick="toggleSubmenu('subServicios')">
+        Servicios <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subServicios">
+        <div class="submenu-item">Becas</div>
+        <div class="submenu-item">Comedor</div>
+        <div class="submenu-item">Biblioteca</div>
+    </div>
 
-        <div class="subject aprobada"><div class="subject-title">Química</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+    <!-- ENCUESTAS -->
+    <div class="menu-item" onclick="toggleSubmenu('subEncuestas')">
+        Encuestas <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subEncuestas">
+        <div class="submenu-item">Encuestas Vigentes</div>
+        <div class="submenu-item">Realizadas</div>
+    </div>
 
-        <div class="subject aprobada"><div class="subject-title">Dibujo Técnico</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+    <!-- EGRESADOS -->
+    <div class="menu-item" onclick="toggleSubmenu('subEgresados')">
+        Egresados <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subEgresados">
+        <div class="submenu-item">Solicitar Título</div>
+        <div class="submenu-item">Seguimiento de Trámite</div>
+        <div class="submenu-item">Información del Egresado</div>
+    </div>
 
-        <div class="subject aprobada"><div class="subject-title">Informática</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+    <!-- MOODLE -->
+    <div class="menu-item" onclick="toggleSubmenu('subMoodle')">
+        Moodle <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subMoodle">
+        <div class="submenu-item">Acceder a Moodle</div>
+        <div class="submenu-item">Mis Cursos</div>
+    </div>
+</div>
 
-        <div class="subject aprobada"><div class="subject-title">Geometría Descriptiva</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+<!-- CONTENIDO -->
+<div class="container">
 
-        <div class="subject aprobada"><div class="subject-title">Probabilidad y Estadística</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+    <h2>Bienvenido</h2>
 
-      </div>
+    <div class="card">
 
-      <!-- MATERIAS 2025 (Estructuras — Construcción — Hidráulica — Geotecnia — Transporte) -->
-      <div class="year-block" data-year="2025">
-        <div class="year-bar">2025</div>
+        <!-- BLOQUE CELESTE -->
+        <div class="header-box">
+            <div class="header-box-title">Calendario Académico</div>
+            <div class="red">Actualizá tu MAIL</div>
+        </div>
 
-        <div class="subject en-curso"><div class="subject-title">Topografía</div>
-        <div class="subject-meta"><span class="tag blue">En curso</span></div></div>
+        <!-- ÍTEMS -->
+        <div class="title">Inscripciones</div>
+        <ul>
+            <li>103 - DIDACTICA</li>
+            <li>111 - EDUCACIÓN FÍSICA</li>
+            <li>102 - PROBLEMAS DE LA FILOSOFIA</li>
+            <li>110 - TALLER DE EXP.MUS.I</li>
+        </ul>
 
-        <div class="subject aprobada"><div class="subject-title">Materiales de Construcción</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+        <div class="title" style="margin-top:12px;">Cursadas</div>
+        <select>
+            <option>2025 - Segundo Cuatr.</option>
+        </select>
 
-        <div class="subject desaprobada"><div class="subject-title">Hidráulica</div>
-        <div class="subject-meta"><span class="tag red">Desaprobada</span></div></div>
+        <p style="margin-top:8px;">
+            <b>Inicio Clases:</b> 18/08/2025<br>
+            <b>Fin Clases:</b> 05/12/2025<br>
+            <b>Inicio Inscripciones:</b> 04/08/2025<br>
+            <b>Fin Inscripciones:</b> 06/09/2025<br>
+            <b>Correlativas hasta:</b> 19/09/2025
+        </p>
 
-        <div class="subject aprobada"><div class="subject-title">Geotecnia</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+        <!-- EXÁMENES -->
+        <div class="title" style="margin-top:12px;">Exámenes</div>
+        <select>
+            <option>Turno 2025-12</option>
+        </select>
 
-        <div class="subject en-curso"><div class="subject-title">Transporte</div>
-        <div class="subject-meta"><span class="tag blue">En curso</span></div></div>
+        <p style="margin-top:8px;">
+            <b>Inicio:</b> 01/12/2025<br>
+            <b>Fin:</b> 30/12/2025
+        </p>
 
-        <div class="subject aprobada"><div class="subject-title">Construcción</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
+        <div class="title">Inscripciones</div>
 
-        <div class="subject aprobada"><div class="subject-title">Estructuras I</div>
-        <div class="subject-meta"><span class="tag green">Aprobada</span></div></div>
-
-        <div class="subject en-curso"><div class="subject-title">Gestión de Proyectos</div>
-        <div class="subject-meta"><span class="tag blue">En curso</span></div></div>
-
-      </div>
+        <div class="exam-msg">
+            No tenés inscripciones a exámenes vigentes para el turno de examen seleccionado.
+        </div>
 
     </div>
-  </main>
-
-  <!-- SIDEBAR DERECHO -->
-  <aside class="sidebar-right">
-    <div class="box">
-      <h4>Calendario Académico</h4>
-      <p>Inicio clases: 03/03/2025</p>
-      <p>Fin clases: 29/11/2025</p>
-    </div>
-  </aside>
 
 </div>
 
 <script>
-document.querySelectorAll('.main-nav .has-sub').forEach(li=>{
-  const btn = li.querySelector('.sub-btn');
-  btn.addEventListener('click', (e)=>{
-    e.stopPropagation();
-    li.classList.toggle('open');
-  });
-});
+    document.getElementById("menuBtn").addEventListener("click", function() {
+        const menu = document.getElementById("menu");
+        menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    });
+
+    function toggleSubmenu(id) {
+        const s = document.getElementById(id);
+        s.style.display = (s.style.display === "flex") ? "none" : "flex";
+    }
 </script>
 
 </body>

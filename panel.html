@@ -1,345 +1,352 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Guaraní - Panel</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SIU Guaraní — Panel Académico</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #e5e5e5;
-        color: #444;
-    }
+/* ----- reset & base ----- */
+*{box-sizing:border-box}
+body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color:#222;}
 
-    /* BARRA SUPERIOR */
-    .topbar {
-        width: 100%;
-        background: #ffffff;
-        height: 55px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding-right: 15px;
-        border-bottom: 1px solid #cfcfcf;
-        position: relative;
-        gap: 10px;
-    }
+/* ----- header / topbar ----- */
+.topbar {
+  width:100%;
+  background:#ffffff;
+  border-bottom:1px solid #e1e4e8;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 12px;
+  gap:12px;
+  position:relative;
+  z-index:1000;
+}
 
-    .topbar button {
-        background: #f2f2f2;
-        border: 1px solid #c7c7c7;
-        padding: 6px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+/* left area: logo + home */
+.topbar-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
-    .icon {
-        width: 22px;
-        height: 22px;
-        vertical-align: middle;
-    }
+/* small UNS logo placeholder (inline SVG) */
+.logo-svg{
+  width:36px;
+  height:36px;
+  display:inline-block;
+  border-radius:50%;
+  background:transparent;
+  padding:4px;
+}
+.logo-svg svg{width:100%;height:100%;display:block}
 
-    /* MENU SUPERIOR */
-    .menu {
-        width: 100%;
-        background: #ffffff;
-        border-bottom: 1px solid #cfcfcf;
-        display: none;
-        flex-direction: column;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        z-index: 50;
-    }
+/* home button (azul como en la captura) */
+.home-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:6px;
+  background:#f7fbff;
+  border:1px solid #dfe7ea;
+  cursor:pointer;
+  color:#0b5d7a;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
 
-    .menu-item {
-        padding: 14px 18px;
-        font-size: 17px;
-        color: #444;
-        border-bottom: 1px solid #e5e5e5;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+/* right area: small action buttons (persona, mail, menu) */
+.topbar-actions{display:flex;align-items:center;gap:8px}
+.topbar-actions button{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:40px;border-radius:6px;
+  border:1px solid #e6e9ec;background:#fafafa;cursor:pointer;
+  box-shadow:0 1px 0 rgba(0,0,0,0.02);
+}
+.topbar-actions button .icon{width:22px;height:22px}
 
-    .menu-item:hover {
-        background: #f2f2f2;
-    }
+/* numeric badge for mail count (small blue) */
+.mail-count{
+  color:#1690c7;
+  font-weight:700;
+  margin-left:6px;
+  font-size:14px;
+}
 
-    .submenu {
-        display: none;
-        flex-direction: column;
-        background: #fafafa;
-        border-left: 3px solid #d0d0d0;
-    }
+/* ----- main menu (mobile-friendly dropdown) ----- */
+.menu {
+  width:100%;
+  background:#ffffff;
+  border-bottom:1px solid #cfcfcf;
+  display:none;
+  flex-direction:column;
+  padding-top:10px;
+  padding-bottom:10px;
+  z-index:50;
+}
 
-    .submenu-item {
-        padding: 12px 30px;
-        font-size: 15px;
-        border-bottom: 1px solid #e5e5e5;
-        color: #555;
-        cursor: pointer;
-    }
+.menu-item {
+  padding:14px 18px;
+  font-size:17px;
+  color:#444;
+  border-bottom:1px solid #e5e5e5;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.menu-item:hover{background:#f2f2f2}
+.submenu{
+  display:none;
+  flex-direction:column;
+  background:#fafafa;
+  border-left:3px solid #d0d0d0;
+}
+.submenu-item{
+  padding:12px 30px;
+  font-size:15px;
+  border-bottom:1px solid #e5e5e5;
+  color:#555;
+  cursor:pointer;
+}
+.submenu-item:hover{background:#efefef}
+.submenu-arrow{margin-left:auto;font-size:15px;opacity:.8}
 
-    .submenu-item:hover {
-        background: #efefef;
-    }
+/* ----- page grid & boxes ----- */
+.container{
+  width:92%;
+  max-width:750px;
+  margin:18px auto;
+}
+.card{background:#fff;border:1px solid #d0d0d0;padding:18px;border-radius:4px;font-size:14px;line-height:1.45}
 
-    .submenu-arrow {
-        font-size: 15px;
-        margin-left: auto;
-    }
+/* === BLOQUE CELESTE: colores ajustados para coincidir con la captura === */
+/* Background a un celeste muy suave y borde sutil */
+.header-box{
+  background: #eef6fb;        /* ajuste para verse un pelín más claro que antes */
+  border: 1px solid #dbe8ef;  /* borde más suave/azulado */
+  padding:10px 12px;
+  border-radius:4px;
+  margin-bottom:15px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
 
-    /* CONTENEDOR */
-    .container {
-        width: 92%;
-        max-width: 750px;
-        margin: 18px auto;
-    }
+/* título pequeño dentro del cuadro (Calendario Académico) */
+.header-box-title{
+  color:#1686b6; /* azul similar al Guaraní */
+  font-size:14px;
+  margin-bottom:6px;
+  font-weight:700;
+}
 
-    h2 {
-        color: #006bb3;
-        font-size: 24px;
-        margin-bottom: 15px;
-        font-weight: normal;
-    }
+/* "Actualizá tu MAIL" en rojo parecido al de la captura */
+.red{
+  color:#cc0000; /* rojo ligeramente apagado */
+  font-weight:700;
+  margin-bottom:10px;
+  font-size:14px;
+}
 
-    .card {
-        background: #ffffff;
-        border: 1px solid #d0d0d0;
-        padding: 18px;
-        border-radius: 4px;
-        font-size: 14px;
-        line-height: 1.45;
-    }
+/* títulos "Cursadas / Exámenes / Inscripciones" */
+.title{
+  font-weight:700;
+  color:#666;
+  margin-top:12px;
+  margin-bottom:6px;
+  font-size:15px;
+}
 
-    /* BLOQUE CELESTE */
-    .header-box {
-        background: #eef3f8;
-        border: 1px solid #d4dce4;
-        padding: 10px 12px;
-        border-radius: 4px;
-        margin-bottom: 15px;
-    }
+/* lista de materias (estilo simple) */
+ul { padding-left:20px; margin-top:5px; color:#222; }
+ul li{ margin-bottom:6px; }
 
-    .header-box-title {
-        color: #3a7db7;
-        font-size: 14px;
-        margin-bottom: 6px;
-        font-weight: bold;
-    }
+/* selects y mensajes */
+select{
+  width:100%;padding:8px;border-radius:4px;border:1px solid #d6dae0;background:#fff;
+}
+.exam-msg{
+  background:#eef5fb;border-top:1px solid #c9dae7;padding:10px 12px;color:#0b6fb8;font-size:14px;margin-top:6px;line-height:1.4;
+}
 
-    .red {
-        color: #d10000;
-        font-weight: bold;
-        margin-bottom: 10px;
-        font-size: 14px;
-    }
-
-    .title {
-        font-weight: bold;
-        color: #666;
-        margin-top: 12px;
-        margin-bottom: 6px;
-        font-size: 15px;
-    }
-
-    select {
-        width: 100%;
-        padding: 6px;
-        border: 1px solid #bfbfbf;
-        border-radius: 3px;
-        font-size: 14px;
-        color: #444;
-        background: #fff;
-    }
-
-    ul {
-        padding-left: 20px;
-        margin-top: 5px;
-    }
-
-    ul li {
-        margin-bottom: 5px;
-    }
-
-    .exam-msg {
-        background: #eef5fb;
-        border-top: 1px solid #c9dae7;
-        padding: 10px 12px;
-        color: #0b6fb8;
-        font-size: 14px;
-        margin-top: 6px;
-        line-height: 1.4;
-    }
+/* responsive */
+@media (max-width:980px){
+  .container{width:96%}
+  .menu{display:flex}
+}
 </style>
 </head>
 
 <body>
 
-<!-- BARRA SUPERIOR -->
-<div class="topbar">
-    <!-- PERSONA -->
-    <button>
-        <img class="icon" src="data:image/svg+xml;utf8,
-        <svg xmlns='http://www.w3.org/2000/svg' fill='%23000' width='22' height='22' viewBox='0 0 24 24'>
-        <path d='M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z'/>
-        </svg>" />
-    </button>
+  <!-- TOPBAR: logo + home (left)  --- actions (right) -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <!-- UNS logo: reemplaza este SVG por tu uns_logo.png si querés -->
+      <div class="logo-svg" title="UNS">
+        <!-- simple circular UNS-like placeholder (replace with real image file if available) -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UNS">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#e9f4fb"/>
+              <stop offset="1" stop-color="#d6eefb"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="16" fill="url(#g1)"/>
+          <circle cx="50" cy="30" r="14" fill="#1686b6"/>
+          <text x="50" y="70" font-family="Arial" font-size="14" fill="#0b4c66" text-anchor="middle">UNS</text>
+        </svg>
+      </div>
 
-    <!-- SOBRE -->
-    <button>
-        <img class="icon" src="data:image/svg+xml;utf8,
-        <svg xmlns='http://www.w3.org/2000/svg' fill='%23000' width='22' height='22' viewBox='0 0 24 24'>
-        <path d='M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8l-10 7z'/>
-        </svg>" />
-        0
-    </button>
-
-    <!-- MENÚ -->
-    <button id="menuBtn">
-        <img class="icon" src="data:image/svg+xml;utf8,
-        <svg xmlns='http://www.w3.org/2000/svg' fill='%23000' width='22' height='22' viewBox='0 0 24 24'>
-        <path d='M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z'/>
-        </svg>" />
-    </button>
-</div>
-
-<!-- MENU DESPLEGABLE -->
-<div class="menu" id="menu">
-
-    <!-- CURSADAS -->
-    <div class="menu-item" onclick="toggleSubmenu('subCursadas')">
-        Cursadas <span class="submenu-arrow">▾</span>
-    </div>
-    <div class="submenu" id="subCursadas">
-        <div class="submenu-item">Inscripción</div>
-        <div class="submenu-item">Seguimiento</div>
+      <!-- home button (azul claro como la captura) -->
+      <button class="home-btn" title="Inicio" onclick="location.href='#'">
+        <!-- small house icon SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#0b5d7a" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3l9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10l9-7z"/>
+        </svg>
+      </button>
     </div>
 
-    <!-- EXÁMENES -->
-    <div class="menu-item" onclick="toggleSubmenu('subExamenes')">
-        Exámenes <span class="submenu-arrow">▾</span>
+    <!-- right actions -->
+    <div class="topbar-actions" aria-hidden="false">
+      <!-- persona -->
+      <button title="Perfil">
+        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+        </svg>
+      </button>
+
+      <!-- mail with count -->
+      <button title="Mensajes">
+        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+          <path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8l-10 7z"/>
+        </svg>
+        <span class="mail-count">0</span>
+      </button>
+
+      <!-- menu -->
+      <button id="menuBtn" aria-controls="menu" aria-expanded="false" title="Abrir menú">
+        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+        </svg>
+      </button>
     </div>
-    <div class="submenu" id="subExamenes">
-        <div class="submenu-item">Inscripción a Exámenes</div>
-        <div class="submenu-item">Mis Mesas</div>
-        <div class="submenu-item">Historial</div>
+  </div>
+
+  <!-- MENU (desplegable mobile) -->
+  <nav id="menu" class="menu" aria-hidden="true">
+    <div class="menu-item" onclick="toggleSubmenu('subCursadas')">Cursadas <span class="submenu-arrow">▾</span></div>
+    <div id="subCursadas" class="submenu">
+      <div class="submenu-item">Inscripción</div>
+      <div class="submenu-item">Seguimiento</div>
     </div>
 
-    <!-- CERTIFICADOS -->
-    <div class="menu-item" onclick="toggleSubmenu('subCertificados')">
-        Certificaciones <span class="submenu-arrow">▾</span>
-    </div>
-    <div class="submenu" id="subCertificados">
-        <div class="submenu-item" onclick="window.open('certificado_visconti.pdf', '_blank')">
-            Solicitud de Certificados
-        </div>
-        <div class="submenu-item">Consulta / Anulación</div>
+    <div class="menu-item" onclick="toggleSubmenu('subExamenes')">Exámenes <span class="submenu-arrow">▾</span></div>
+    <div id="subExamenes" class="submenu">
+      <div class="submenu-item">Inscripción a Exámenes</div>
+      <div class="submenu-item">Mis Mesas</div>
+      <div class="submenu-item">Historial</div>
     </div>
 
-    <!-- RESTO IGUAL -->
+    <div class="menu-item" onclick="toggleSubmenu('subCertificados')">Certificaciones <span class="submenu-arrow">▾</span></div>
+    <div id="subCertificados" class="submenu">
+      <div class="submenu-item" onclick="window.open('certificado_visconti.pdf','_blank')">Solicitud de Certificados</div>
+      <div class="submenu-item">Consulta / Anulación</div>
+    </div>
+
     <div class="menu-item" onclick="toggleSubmenu('subIngreso')">Ingreso <span class="submenu-arrow">▾</span></div>
-    <div class="submenu" id="subIngreso">
-        <div class="submenu-item">Requisitos</div>
-        <div class="submenu-item">Documentación</div>
-        <div class="submenu-item">Estado de Mi Ingreso</div>
+    <div id="subIngreso" class="submenu">
+      <div class="submenu-item">Requisitos</div>
+      <div class="submenu-item">Documentación</div>
     </div>
 
     <div class="menu-item" onclick="toggleSubmenu('subMatricula')">Matrícula <span class="submenu-arrow">▾</span></div>
-    <div class="submenu" id="subMatricula">
-        <div class="submenu-item">Generar Matrícula</div>
-        <div class="submenu-item">Pagos / Aranceles</div>
-        <div class="submenu-item">Historial de Matrículas</div>
+    <div id="subMatricula" class="submenu">
+      <div class="submenu-item">Generar Matrícula</div>
+      <div class="submenu-item">Pagos / Aranceles</div>
     </div>
 
     <div class="menu-item" onclick="toggleSubmenu('subConsultas')">Consultas <span class="submenu-arrow">▾</span></div>
-    <div class="submenu" id="subConsultas">
-        <div class="submenu-item">Consultar Alumno</div>
-        <div class="submenu-item">Estado Académico</div>
-        <div class="submenu-item">Consulta de Plan</div>
+    <div id="subConsultas" class="submenu">
+      <div class="submenu-item">Consultar Alumno</div>
+      <div class="submenu-item">Estado Académico</div>
     </div>
 
-    <div class="menu-item" onclick="toggleSubmenu('subServicios')">Servicios <span class="submenu-arrow">▾</span></div>
-    <div class="submenu" id="subServicios">
-        <div class="submenu-item">Becas</div>
-        <div class="submenu-item">Comedor</div>
-        <div class="submenu-item">Biblioteca</div>
-    </div>
+    <div class="menu-item">Servicios</div>
+    <div class="menu-item">Encuestas</div>
+    <div class="menu-item">Egresados</div>
+    <div class="menu-item">Moodle</div>
+  </nav>
 
-</div>
-
-<!-- CONTENIDO -->
-<div class="container">
-
-    <h2>Bienvenido</h2>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+    <h2 style="color:#1686b6;margin:10px 0 10px 0">Bienvenido</h2>
 
     <div class="card">
+      <!-- CAJA CELESTE -->
+      <div class="header-box">
+        <div class="header-box-title">Calendario Académico</div>
+        <div class="red">Actualizá tu MAIL</div>
 
-        <!-- CELESTE -->
-        <div class="header-box">
-            <div class="header-box-title">Calendario Académico</div>
-            <div class="red">Actualizá tu MAIL</div>
-        </div>
-
-        <!-- ING. CIVIL - MATERIAS NUEVAS -->
+        <!-- Inscripciones: materias nueva lista con códigos -->
         <div class="title">Inscripciones</div>
         <ul>
-            <li>101 - Matemáticas</li>
-            <li>102 - Física</li>
-            <li>103 - Construcción</li>
-            <li>104 - Estructuras</li>
-            <li>105 - Geotecnia</li>
-            <li>106 - Hidráulica</li>
-            <li>107 - Transporte</li>
-            <li>108 - Gestión de Proyectos</li>
+          <li>101 - Matemáticas</li>
+          <li>102 - Física</li>
+          <li>103 - Construcción</li>
+          <li>104 - Estructuras</li>
+          <li>105 - Geotecnia</li>
+          <li>106 - Hidráulica</li>
+          <li>107 - Transporte</li>
+          <li>108 - Gestión de Proyectos</li>
         </ul>
 
-        <div class="title" style="margin-top:12px;">Cursadas</div>
-        <select>
-            <option>2025 - Segundo Cuatr.</option>
+        <!-- Cursadas -->
+        <div class="title">Cursadas</div>
+        <select aria-label="Cursadas">
+          <option>2025 - Segundo Cuatr.</option>
         </select>
 
-        <p style="margin-top:8px;">
-            <b>Inicio:</b> 18/08/2025<br>
-            <b>Fin:</b> 05/12/2025<br>
-            <b>Inscripciones:</b> 04/08 - 06/09<br>
-            <b>Correlativas:</b> hasta 19/09
+        <p style="margin-top:8px;color:#222;">
+          <b>Inicio:</b> 18/08/2025<br>
+          <b>Fin:</b> 05/12/2025<br>
+          <b>Inscripciones:</b> 04/08 - 06/09<br>
+          <b>Correlativas:</b> hasta 19/09
         </p>
 
+        <!-- Exámenes -->
         <div class="title">Exámenes</div>
-        <select>
-            <option>Turno 2025-12</option>
+        <select aria-label="Exámenes">
+          <option>Turno 2025-12</option>
         </select>
 
-        <p style="margin-top:8px;">
-            <b>Inicio:</b> 01/12/2025<br>
-            <b>Fin:</b> 30/12/2025
+        <p style="margin-top:8px;color:#222;">
+          <b>Inicio:</b> 01/12/2025<br>
+          <b>Fin:</b> 30/12/2025
         </p>
 
         <div class="title">Inscripciones</div>
-        <div class="exam-msg">
-            No tenés inscripciones a exámenes vigentes para el turno de examen seleccionado.
-        </div>
-
+        <div class="exam-msg">No tenés inscripciones a exámenes vigentes para el turno de examen seleccionado.</div>
+      </div>
     </div>
-</div>
+  </main>
 
 <script>
-    document.getElementById("menuBtn").addEventListener("click", function() {
-        const menu = document.getElementById("menu");
-        menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-    });
+  // toggle menu visibility
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    const menu = document.getElementById('menu');
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    menu.style.display = expanded ? 'none' : 'flex';
+    menu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+    this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  });
 
-    function toggleSubmenu(id) {
-        const s = document.getElementById(id);
-        s.style.display = (s.style.display === "flex") ? "none" : "flex";
-    }
+  function toggleSubmenu(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.style.display = (el.style.display === 'flex') ? 'none' : 'flex';
+  }
 </script>
 
 </body>

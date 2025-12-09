@@ -6,11 +6,16 @@
 <title>SIU Guaraní — Panel Académico</title>
 
 <style>
-/* ----- reset & base ----- */
+/* ----- RESET ----- */
 *{box-sizing:border-box}
-body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color:#222;}
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f2f4f6;
+  color:#222;
+}
 
-/* ----- header / topbar ----- */
+/* ----- TOPBAR ----- */
 .topbar {
   width:100%;
   background:#ffffff;
@@ -24,14 +29,13 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   z-index:1000;
 }
 
-/* left area: logo + home */
+/* left: logo + home */
 .topbar-left{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-/* LOGO REAL UNS */
 .logo-img {
   width:40px;
   height:40px;
@@ -39,7 +43,6 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   border-radius:4px;
 }
 
-/* home button */
 .home-btn{
   display:inline-flex;
   align-items:center;
@@ -51,18 +54,28 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   border:1px solid #dfe7ea;
   cursor:pointer;
   color:#0b5d7a;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
 }
 
-/* right area: small action buttons */
-.topbar-actions{display:flex;align-items:center;gap:8px}
-.topbar-actions button{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:44px;height:40px;border-radius:6px;
-  border:1px solid #e6e9ec;background:#fafafa;cursor:pointer;
-  box-shadow:0 1px 0 rgba(0,0,0,0.02);
+/* right: persona, mail, menú */
+.topbar-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-.topbar-actions button .icon{width:22px;height:22px}
+
+.topbar-actions button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:40px;
+  border-radius:6px;
+  border:1px solid #e6e9ec;
+  background:#fafafa;
+  cursor:pointer;
+}
+
+.icon{width:22px;height:22px}
 
 .mail-count{
   color:#1690c7;
@@ -71,16 +84,20 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   font-size:14px;
 }
 
-/* ----- menu ----- */
+/* ----- MENU DESPLEGABLE ----- */
 .menu {
   width:100%;
   background:#ffffff;
   border-bottom:1px solid #cfcfcf;
-  display:none;
+  display:none;                /* <--- IMPORTANTE: arranca cerrado */
   flex-direction:column;
-  padding-top:10px;
-  padding-bottom:10px;
+  padding:10px 0;
   z-index:50;
+}
+
+/* Mostrar menú solo cuando está abierto */
+.menu[aria-hidden="false"] {
+  display:flex !important;
 }
 
 .menu-item {
@@ -91,9 +108,9 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   cursor:pointer;
   display:flex;
   align-items:center;
-  gap:8px;
 }
 .menu-item:hover{background:#f2f2f2}
+
 .submenu{
   display:none;
   flex-direction:column;
@@ -108,36 +125,45 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   cursor:pointer;
 }
 .submenu-item:hover{background:#efefef}
-.submenu-arrow{margin-left:auto;font-size:15px;opacity:.8}
+.submenu-arrow{margin-left:auto;opacity:.8}
 
-/* ----- page ----- */
+/* ----- CONTENIDO ----- */
 .container{
   width:92%;
   max-width:750px;
   margin:18px auto;
 }
-.card{background:#fff;border:1px solid #d0d0d0;padding:18px;border-radius:4px;font-size:14px;line-height:1.45}
 
-/* BLOQUE CELESTE */
+.card{
+  background:#fff;
+  border:1px solid #d0d0d0;
+  padding:18px;
+  border-radius:4px;
+  font-size:14px;
+  line-height:1.45;
+}
+
+/* Caja celeste */
 .header-box{
-  background: #eef6fb;
-  border: 1px solid #dbe8ef;
+  background:#eef6fb;
+  border:1px solid #dbe8ef;
   padding:10px 12px;
   border-radius:4px;
-  margin-bottom:15px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  margin-bottom:15px;
 }
+
 .header-box-title{
   color:#1686b6;
   font-size:14px;
   margin-bottom:6px;
   font-weight:700;
 }
+
 .red{
   color:#cc0000;
   font-weight:700;
   margin-bottom:10px;
-  font-size:14px;
 }
 
 .title{
@@ -147,15 +173,16 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   margin-bottom:6px;
   font-size:15px;
 }
-ul{padding-left:20px;margin-top:5px;color:#222}
+
 ul li{margin-bottom:6px}
 
+/* Selects */
 select{
   width:100%;
   padding:8px;
   border-radius:4px;
   border:1px solid #d6dae0;
-  background:#fff;
+  background:white;
 }
 
 .exam-msg{
@@ -163,87 +190,78 @@ select{
   border-top:1px solid #c9dae7;
   padding:10px 12px;
   color:#0b6fb8;
-  font-size:14px;
   margin-top:6px;
-  line-height:1.4;
 }
 
-@media (max-width:980px){
+/* Responsive */
+@media(max-width:980px){
   .container{width:96%}
-  .menu{display:flex}
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOPBAR con tu logo -->
+<!-- TOPBAR -->
 <div class="topbar">
+
   <div class="topbar-left">
-
-    <!-- 🔵 AHORA SÍ: TU LOGO REAL -->
-    <img src="logo-uns.png" alt="UNS" class="logo-img">
-
-    <!-- home -->
-    <button class="home-btn" onclick="location.href='#'">
+    <img src="logo-uns.png" class="logo-img">
+    <button class="home-btn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="#0b5d7a">
-        <path d="M12 3l9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10l9-7z"/>
+        <path d="M12 3l9 7v11H6v-7H9v7H4V10z"/>
       </svg>
     </button>
-
   </div>
 
   <div class="topbar-actions">
-
     <button>
-      <svg class="icon" viewBox="0 0 24 24" fill="#000">
-        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
-      </svg>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
     </button>
-
     <button>
-      <svg class="icon" viewBox="0 0 24 24" fill="#000">
-        <path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8l-10 7z"/>
-      </svg>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8z"/></svg>
       <span class="mail-count">0</span>
     </button>
-
-    <button id="menuBtn">
-      <svg class="icon" viewBox="0 0 24 24" fill="#000">
-        <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
-      </svg>
+    <button id="menuBtn" aria-expanded="false">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </button>
-
   </div>
+
 </div>
 
 <!-- MENU -->
-<nav id="menu" class="menu">
+<nav id="menu" class="menu" aria-hidden="true">
 
-  <div class="menu-item" onclick="toggleSubmenu('subCursadas')">Cursadas <span class="submenu-arrow">▾</span></div>
-  <div class="submenu" id="subCursadas">
+  <div class="menu-item" onclick="toggleSubmenu('subCursadas')">
+    Cursadas <span class="submenu-arrow">▾</span>
+  </div>
+  <div id="subCursadas" class="submenu">
     <div class="submenu-item">Inscripción</div>
     <div class="submenu-item">Seguimiento</div>
   </div>
 
-  <div class="menu-item" onclick="toggleSubmenu('subExamenes')">Exámenes <span class="submenu-arrow">▾</span></div>
-  <div class="submenu" id="subExamenes">
+  <div class="menu-item" onclick="toggleSubmenu('subExamenes')">
+    Exámenes <span class="submenu-arrow">▾</span>
+  </div>
+  <div id="subExamenes" class="submenu">
     <div class="submenu-item">Inscripción a Exámenes</div>
     <div class="submenu-item">Mis Mesas</div>
     <div class="submenu-item">Historial</div>
   </div>
 
-  <div class="menu-item" onclick="toggleSubmenu('subCertificados')">Certificaciones <span class="submenu-arrow">▾</span></div>
-  <div class="submenu" id="subCertificados">
+  <div class="menu-item" onclick="toggleSubmenu('subCertificados')">
+    Certificaciones <span class="submenu-arrow">▾</span>
+  </div>
+  <div id="subCertificados" class="submenu">
     <div class="submenu-item" onclick="window.open('certificado_visconti.pdf','_blank')">Solicitud de Certificados</div>
     <div class="submenu-item">Consulta / Anulación</div>
   </div>
 
 </nav>
 
-<!-- CONTENT -->
+<!-- CONTENIDO -->
 <main class="container">
-  <h2 style="color:#1686b6;margin:10px 0 10px 0">Bienvenido</h2>
+  <h2 style="color:#1686b6;margin:10px 0">Bienvenido</h2>
 
   <div class="card">
     <div class="header-box">
@@ -263,43 +281,39 @@ select{
       </ul>
 
       <div class="title">Cursadas</div>
-      <select>
-        <option>2025 - Segundo Cuatr.</option>
-      </select>
+      <select><option>2025 - Segundo Cuatr.</option></select>
 
-      <p>
-        <b>Inicio:</b> 18/08/2025<br>
-        <b>Fin:</b> 05/12/2025<br>
-        <b>Inscripciones:</b> 04/08 - 06/09<br>
-        <b>Correlativas:</b> hasta 19/09
-      </p>
+      <p><b>Inicio:</b> 18/08/2025<br>
+      <b>Fin:</b> 05/12/2025<br>
+      <b>Inscripciones:</b> 04/08 - 06/09<br>
+      <b>Correlativas:</b> hasta 19/09</p>
 
       <div class="title">Exámenes</div>
-      <select>
-        <option>Turno 2025-12</option>
-      </select>
+      <select><option>Turno 2025-12</option></select>
 
-      <p>
-        <b>Inicio:</b> 01/12/2025<br>
-        <b>Fin:</b> 30/12/2025
-      </p>
+      <p><b>Inicio:</b> 01/12/2025<br>
+      <b>Fin:</b> 30/12/2025</p>
 
       <div class="title">Inscripciones</div>
-      <div class="exam-msg">
-        No tenés inscripciones a exámenes vigentes para el turno de examen seleccionado.
-      </div>
+      <div class="exam-msg">No tenés inscripciones a exámenes vigentes para el turno seleccionado.</div>
+
     </div>
   </div>
 </main>
 
 <script>
+/* ABRIR/CERRAR MENU */
 document.getElementById("menuBtn").addEventListener("click", ()=>{
   const menu = document.getElementById("menu");
-  menu.style.display = (menu.style.display==="flex") ? "none" : "flex";
+  const expanded = menu.getAttribute("aria-hidden") === "false";
+
+  menu.setAttribute("aria-hidden", expanded ? "true" : "false");
 });
+
+/* SUBMENÚS */
 function toggleSubmenu(id){
-  const s=document.getElementById(id);
-  s.style.display=(s.style.display==="flex")?"none":"flex";
+  const sub = document.getElementById(id);
+  sub.style.display = (sub.style.display==="flex") ? "none" : "flex";
 }
 </script>
 

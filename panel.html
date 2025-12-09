@@ -68,9 +68,28 @@
         background: #f2f2f2;
     }
 
+    .submenu {
+        display: none;
+        flex-direction: column;
+        background: #fafafa;
+        border-left: 3px solid #d0d0d0;
+    }
+
+    .submenu-item {
+        padding: 12px 30px;
+        font-size: 15px;
+        border-bottom: 1px solid #e5e5e5;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .submenu-item:hover {
+        background: #efefef;
+    }
+
     .submenu-arrow {
         font-size: 15px;
-        margin-left: 3px;
+        margin-left: auto;
     }
 
     /* CONTENEDOR */
@@ -187,11 +206,39 @@
 
 <!-- MENU DESPLEGABLE -->
 <div class="menu" id="menu">
-    <div class="menu-item">Cursadas<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Exámenes<span class="submenu-arrow">▾</span></div>
+
+    <!-- CURSADAS -->
+    <div class="menu-item" onclick="toggleSubmenu('subCursadas')">
+        Cursadas <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subCursadas">
+        <div class="submenu-item">Inscripción</div>
+        <div class="submenu-item">Seguimiento</div>
+    </div>
+
+    <!-- EXÁMENES -->
+    <div class="menu-item" onclick="toggleSubmenu('subExamenes')">
+        Exámenes <span class="submenu-arrow">▾</span>
+    </div>
+    <div class="submenu" id="subExamenes">
+        <div class="submenu-item">Inscripción a Exámenes</div>
+        <div class="submenu-item">Mis Mesas</div>
+        <div class="submenu-item">Historial</div>
+    </div>
+
+    <!-- CERTIFICACIONES -->
+    <div class="menu-item" onclick="toggleSubmenu('subCertificados')">
+        Certificaciones <span class="submenu-arrow">▾</span>
+    </div>
+
+    <div class="submenu" id="subCertificados">
+        <div class="submenu-item" onclick="location.href='certificado.html'">Solicitud de Certificados</div>
+        <div class="submenu-item">Consulta / Anulación</div>
+    </div>
+
+    <!-- RESTO (SIN CAMBIAR, como pediste) -->
     <div class="menu-item">Ingreso<span class="submenu-arrow">▾</span></div>
     <div class="menu-item">Matrícula<span class="submenu-arrow">▾</span></div>
-    <div class="menu-item">Certificaciones<span class="submenu-arrow">▾</span></div>
     <div class="menu-item">Consultas<span class="submenu-arrow">▾</span></div>
     <div class="menu-item">Servicios<span class="submenu-arrow">▾</span></div>
     <div class="menu-item">Encuestas<span class="submenu-arrow">▾</span></div>
@@ -260,6 +307,11 @@
         const menu = document.getElementById("menu");
         menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
     });
+
+    function toggleSubmenu(id) {
+        const s = document.getElementById(id);
+        s.style.display = (s.style.display === "flex") ? "none" : "flex";
+    }
 </script>
 
 </body>

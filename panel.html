@@ -6,16 +6,11 @@
 <title>SIU Guaraní — Panel Académico</title>
 
 <style>
-/* ----- RESET ----- */
+/* ----- reset & base ----- */
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:#f2f4f6;
-  color:#222;
-}
+body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color:#222;}
 
-/* ----- TOPBAR ----- */
+/* ----- header / topbar ----- */
 .topbar {
   width:100%;
   background:#ffffff;
@@ -29,20 +24,25 @@ body{
   z-index:1000;
 }
 
-/* left: logo + home */
+/* left area: logo + home */
 .topbar-left{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.logo-img {
-  width:40px;
-  height:40px;
-  object-fit:contain;
-  border-radius:4px;
+/* small UNS logo placeholder (inline SVG) */
+.logo-svg{
+  width:36px;
+  height:36px;
+  display:inline-block;
+  border-radius:50%;
+  background:transparent;
+  padding:4px;
 }
+.logo-svg svg{width:100%;height:100%;display:block}
 
+/* home button (azul como en la captura) */
 .home-btn{
   display:inline-flex;
   align-items:center;
@@ -54,29 +54,20 @@ body{
   border:1px solid #dfe7ea;
   cursor:pointer;
   color:#0b5d7a;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
 }
 
-/* right: persona, mail, menú */
-.topbar-actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
+/* right area: small action buttons (persona, mail, menu) */
+.topbar-actions{display:flex;align-items:center;gap:8px}
 .topbar-actions button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:44px;
-  height:40px;
-  border-radius:6px;
-  border:1px solid #e6e9ec;
-  background:#fafafa;
-  cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:40px;border-radius:6px;
+  border:1px solid #e6e9ec;background:#fafafa;cursor:pointer;
+  box-shadow:0 1px 0 rgba(0,0,0,0.02);
 }
+.topbar-actions button .icon{width:22px;height:22px}
 
-.icon{width:22px;height:22px}
-
+/* numeric badge for mail count (small blue) */
 .mail-count{
   color:#1690c7;
   font-weight:700;
@@ -84,20 +75,16 @@ body{
   font-size:14px;
 }
 
-/* ----- MENU DESPLEGABLE ----- */
+/* ----- main menu (mobile-friendly dropdown) ----- */
 .menu {
   width:100%;
   background:#ffffff;
   border-bottom:1px solid #cfcfcf;
-  display:none;                /* <--- IMPORTANTE: arranca cerrado */
+  display:none;
   flex-direction:column;
-  padding:10px 0;
+  padding-top:10px;
+  padding-bottom:10px;
   z-index:50;
-}
-
-/* Mostrar menú solo cuando está abierto */
-.menu[aria-hidden="false"] {
-  display:flex !important;
 }
 
 .menu-item {
@@ -108,9 +95,9 @@ body{
   cursor:pointer;
   display:flex;
   align-items:center;
+  gap:8px;
 }
 .menu-item:hover{background:#f2f2f2}
-
 .submenu{
   display:none;
   flex-direction:column;
@@ -125,47 +112,44 @@ body{
   cursor:pointer;
 }
 .submenu-item:hover{background:#efefef}
-.submenu-arrow{margin-left:auto;opacity:.8}
+.submenu-arrow{margin-left:auto;font-size:15px;opacity:.8}
 
-/* ----- CONTENIDO ----- */
+/* ----- page grid & boxes ----- */
 .container{
   width:92%;
   max-width:750px;
   margin:18px auto;
 }
+.card{background:#fff;border:1px solid #d0d0d0;padding:18px;border-radius:4px;font-size:14px;line-height:1.45}
 
-.card{
-  background:#fff;
-  border:1px solid #d0d0d0;
-  padding:18px;
-  border-radius:4px;
-  font-size:14px;
-  line-height:1.45;
-}
-
-/* Caja celeste */
+/* === BLOQUE CELESTE: colores ajustados para coincidir con la captura === */
+/* Background a un celeste muy suave y borde sutil */
 .header-box{
-  background:#eef6fb;
-  border:1px solid #dbe8ef;
+  background: #eef6fb;        /* ajuste para verse un pelín más claro que antes */
+  border: 1px solid #dbe8ef;  /* borde más suave/azulado */
   padding:10px 12px;
   border-radius:4px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
   margin-bottom:15px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
+/* título pequeño dentro del cuadro (Calendario Académico) */
 .header-box-title{
-  color:#1686b6;
+  color:#1686b6; /* azul similar al Guaraní */
   font-size:14px;
   margin-bottom:6px;
   font-weight:700;
 }
 
+/* "Actualizá tu MAIL" en rojo parecido al de la captura */
 .red{
-  color:#cc0000;
+  color:#cc0000; /* rojo ligeramente apagado */
   font-weight:700;
   margin-bottom:10px;
+  font-size:14px;
 }
 
+/* títulos "Cursadas / Exámenes / Inscripciones" */
 .title{
   font-weight:700;
   color:#666;
@@ -174,147 +158,195 @@ body{
   font-size:15px;
 }
 
-ul li{margin-bottom:6px}
+/* lista de materias (estilo simple) */
+ul { padding-left:20px; margin-top:5px; color:#222; }
+ul li{ margin-bottom:6px; }
 
-/* Selects */
+/* selects y mensajes */
 select{
-  width:100%;
-  padding:8px;
-  border-radius:4px;
-  border:1px solid #d6dae0;
-  background:white;
+  width:100%;padding:8px;border-radius:4px;border:1px solid #d6dae0;background:#fff;
 }
-
 .exam-msg{
-  background:#eef5fb;
-  border-top:1px solid #c9dae7;
-  padding:10px 12px;
-  color:#0b6fb8;
-  margin-top:6px;
+  background:#eef5fb;border-top:1px solid #c9dae7;padding:10px 12px;color:#0b6fb8;font-size:14px;margin-top:6px;line-height:1.4;
 }
 
-/* Responsive */
-@media(max-width:980px){
+/* responsive */
+@media (max-width:980px){
   .container{width:96%}
+  .menu{display:flex}
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
+  <!-- TOPBAR: logo + home (left)  --- actions (right) -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <!-- UNS logo: reemplaza este SVG por tu uns_logo.png si querés -->
+      <div class="logo-svg" title="UNS">
+        <!-- simple circular UNS-like placeholder (replace with real image file if available) -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UNS">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#e9f4fb"/>
+              <stop offset="1" stop-color="#d6eefb"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="16" fill="url(#g1)"/>
+          <circle cx="50" cy="30" r="14" fill="#1686b6"/>
+          <text x="50" y="70" font-family="Arial" font-size="14" fill="#0b4c66" text-anchor="middle">UNS</text>
+        </svg>
+      </div>
 
-  <div class="topbar-left">
-    <img src="logo-uns.png" class="logo-img">
-    <button class="home-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="#0b5d7a">
-        <path d="M12 3l9 7v11H6v-7H9v7H4V10z"/>
-      </svg>
-    </button>
-  </div>
+      <!-- home button (azul claro como la captura) -->
+      <button class="home-btn" title="Inicio" onclick="location.href='#'">
+        <!-- small house icon SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#0b5d7a" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 3l9 7v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10l9-7z"/>
+        </svg>
+      </button>
+    </div>
 
-  <div class="topbar-actions">
-    <button>
-      <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
-    </button>
-    <button>
-      <svg class="icon" viewBox="0 0 24 24"><path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8z"/></svg>
-      <span class="mail-count">0</span>
-    </button>
-    <button id="menuBtn" aria-expanded="false">
-      <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </button>
-  </div>
+    <!-- right actions -->
+    <div class="topbar-actions" aria-hidden="false">
+      <!-- persona -->
+      <button title="Perfil">
+        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+        </svg>
+      </button>
 
-</div>
+      <!-- mail with count -->
+      <button title="Mensajes">
+        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+          <path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8l-10 7z"/>
+        </svg>
+        <span class="mail-count">0</span>
+      </button>
 
-<!-- MENU -->
-<nav id="menu" class="menu" aria-hidden="true">
-
-  <div class="menu-item" onclick="toggleSubmenu('subCursadas')">
-    Cursadas <span class="submenu-arrow">▾</span>
-  </div>
-  <div id="subCursadas" class="submenu">
-    <div class="submenu-item">Inscripción</div>
-    <div class="submenu-item">Seguimiento</div>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('subExamenes')">
-    Exámenes <span class="submenu-arrow">▾</span>
-  </div>
-  <div id="subExamenes" class="submenu">
-    <div class="submenu-item">Inscripción a Exámenes</div>
-    <div class="submenu-item">Mis Mesas</div>
-    <div class="submenu-item">Historial</div>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('subCertificados')">
-    Certificaciones <span class="submenu-arrow">▾</span>
-  </div>
-  <div id="subCertificados" class="submenu">
-    <div class="submenu-item" onclick="window.open('certificado_visconti.pdf','_blank')">Solicitud de Certificados</div>
-    <div class="submenu-item">Consulta / Anulación</div>
-  </div>
-
-</nav>
-
-<!-- CONTENIDO -->
-<main class="container">
-  <h2 style="color:#1686b6;margin:10px 0">Bienvenido</h2>
-
-  <div class="card">
-    <div class="header-box">
-      <div class="header-box-title">Calendario Académico</div>
-      <div class="red">Actualizá tu MAIL</div>
-
-      <div class="title">Inscripciones</div>
-      <ul>
-        <li>101 - Matemáticas</li>
-        <li>102 - Física</li>
-        <li>103 - Construcción</li>
-        <li>104 - Estructuras</li>
-        <li>105 - Geotecnia</li>
-        <li>106 - Hidráulica</li>
-        <li>107 - Transporte</li>
-        <li>108 - Gestión de Proyectos</li>
-      </ul>
-
-      <div class="title">Cursadas</div>
-      <select><option>2025 - Segundo Cuatr.</option></select>
-
-      <p><b>Inicio:</b> 18/08/2025<br>
-      <b>Fin:</b> 05/12/2025<br>
-      <b>Inscripciones:</b> 04/08 - 06/09<br>
-      <b>Correlativas:</b> hasta 19/09</p>
-
-      <div class="title">Exámenes</div>
-      <select><option>Turno 2025-12</option></select>
-
-      <p><b>Inicio:</b> 01/12/2025<br>
-      <b>Fin:</b> 30/12/2025</p>
-
-      <div class="title">Inscripciones</div>
-      <div class="exam-msg">No tenés inscripciones a exámenes vigentes para el turno seleccionado.</div>
-
+      <!-- menu -->
+      <button id="menuBtn" aria-controls="menu" aria-expanded="false" title="Abrir menú">
+        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000">
+          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+        </svg>
+      </button>
     </div>
   </div>
-</main>
+
+  <!-- MENU (desplegable mobile) -->
+  <nav id="menu" class="menu" aria-hidden="true">
+    <div class="menu-item" onclick="toggleSubmenu('subCursadas')">Cursadas <span class="submenu-arrow">▾</span></div>
+    <div id="subCursadas" class="submenu">
+      <div class="submenu-item">Inscripción</div>
+      <div class="submenu-item">Seguimiento</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleSubmenu('subExamenes')">Exámenes <span class="submenu-arrow">▾</span></div>
+    <div id="subExamenes" class="submenu">
+      <div class="submenu-item">Inscripción a Exámenes</div>
+      <div class="submenu-item">Mis Mesas</div>
+      <div class="submenu-item">Historial</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleSubmenu('subCertificados')">Certificaciones <span class="submenu-arrow">▾</span></div>
+    <div id="subCertificados" class="submenu">
+      <div class="submenu-item" onclick="window.open('certificado_visconti.pdf','_blank')">Solicitud de Certificados</div>
+      <div class="submenu-item">Consulta / Anulación</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleSubmenu('subIngreso')">Ingreso <span class="submenu-arrow">▾</span></div>
+    <div id="subIngreso" class="submenu">
+      <div class="submenu-item">Requisitos</div>
+      <div class="submenu-item">Documentación</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleSubmenu('subMatricula')">Matrícula <span class="submenu-arrow">▾</span></div>
+    <div id="subMatricula" class="submenu">
+      <div class="submenu-item">Generar Matrícula</div>
+      <div class="submenu-item">Pagos / Aranceles</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleSubmenu('subConsultas')">Consultas <span class="submenu-arrow">▾</span></div>
+    <div id="subConsultas" class="submenu">
+      <div class="submenu-item">Consultar Alumno</div>
+      <div class="submenu-item">Estado Académico</div>
+    </div>
+
+    <div class="menu-item">Servicios</div>
+    <div class="menu-item">Encuestas</div>
+    <div class="menu-item">Egresados</div>
+    <div class="menu-item">Moodle</div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+    <h2 style="color:#1686b6;margin:10px 0 10px 0">Bienvenido</h2>
+
+    <div class="card">
+      <!-- CAJA CELESTE -->
+      <div class="header-box">
+        <div class="header-box-title">Calendario Académico</div>
+        <div class="red">Actualizá tu MAIL</div>
+
+        <!-- Inscripciones: materias nueva lista con códigos -->
+        <div class="title">Inscripciones</div>
+        <ul>
+          <li>101 - Matemáticas</li>
+          <li>102 - Física</li>
+          <li>103 - Construcción</li>
+          <li>104 - Estructuras</li>
+          <li>105 - Geotecnia</li>
+          <li>106 - Hidráulica</li>
+          <li>107 - Transporte</li>
+          <li>108 - Gestión de Proyectos</li>
+        </ul>
+
+        <!-- Cursadas -->
+        <div class="title">Cursadas</div>
+        <select aria-label="Cursadas">
+          <option>2025 - Segundo Cuatr.</option>
+        </select>
+
+        <p style="margin-top:8px;color:#222;">
+          <b>Inicio:</b> 18/08/2025<br>
+          <b>Fin:</b> 05/12/2025<br>
+          <b>Inscripciones:</b> 04/08 - 06/09<br>
+          <b>Correlativas:</b> hasta 19/09
+        </p>
+
+        <!-- Exámenes -->
+        <div class="title">Exámenes</div>
+        <select aria-label="Exámenes">
+          <option>Turno 2025-12</option>
+        </select>
+
+        <p style="margin-top:8px;color:#222;">
+          <b>Inicio:</b> 01/12/2025<br>
+          <b>Fin:</b> 30/12/2025
+        </p>
+
+        <div class="title">Inscripciones</div>
+        <div class="exam-msg">No tenés inscripciones a exámenes vigentes para el turno de examen seleccionado.</div>
+      </div>
+    </div>
+  </main>
 
 <script>
-/* ABRIR/CERRAR MENU */
-document.getElementById("menuBtn").addEventListener("click", ()=>{
-  const menu = document.getElementById("menu");
-  const expanded = menu.getAttribute("aria-hidden") === "false";
+  // toggle menu visibility
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    const menu = document.getElementById('menu');
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    menu.style.display = expanded ? 'none' : 'flex';
+    menu.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+    this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  });
 
-  menu.setAttribute("aria-hidden", expanded ? "true" : "false");
-});
-
-/* SUBMENÚS */
-function toggleSubmenu(id){
-  const sub = document.getElementById(id);
-  sub.style.display = (sub.style.display==="flex") ? "none" : "flex";
-}
+  function toggleSubmenu(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.style.display = (el.style.display === 'flex') ? 'none' : 'flex';
+  }
 </script>
 
 </body>

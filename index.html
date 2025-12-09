@@ -13,29 +13,33 @@ body {
     padding: 0;
 }
 
-/* Barra superior con logo + menú */
+/* Barra superior EXACTA */
 .topbar {
     background: #ffffff;
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 12px 20px;
+    font-size: 20px;
+    color: #555;
     border-bottom: 1px solid #dcdcdc;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-/* Logo UNS */
-.logo-uns {
-    height: 40px;
-}
-
-/* Tres rayitas */
+/* Icono menú (3 rayitas) */
 .menu-icon {
     font-size: 26px;
     cursor: pointer;
-    padding: 5px 10px;
+    user-select: none;
 }
 
-/* Caja login */
+/* LOGO UNS */
+.logo-uns {
+    height: 38px;
+    margin-left: auto;
+}
+
+/* Caja centrada */
 .login-box {
     width: 90%;
     max-width: 380px;
@@ -46,12 +50,12 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Título login */
+/* Título */
 .login-title {
     font-size: 22px;
     text-align: center;
     margin-bottom: 15px;
-    color: #555;
+    color: #333;
 }
 
 /* Inputs */
@@ -102,10 +106,11 @@ a {
 
 <body>
 
-<!-- Barra superior EXACTA -->
+<!-- BARRA SUPERIOR CON 3 RAYITAS + LOGO -->
 <div class="topbar">
-    <img src="uns_logo.png" class="logo-uns" alt="UNS">
-    <div class="menu-icon">&#9776;</div>
+    <span class="menu-icon">☰</span>
+    SIU Guaraní
+    <img src="logo-uns.png" class="logo-uns" alt="UNS">
 </div>
 
 <div class="login-box">

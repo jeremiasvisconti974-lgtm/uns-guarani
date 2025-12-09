@@ -1,57 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIU Guaraní - Ingreso</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>SIU Guaraní</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra superior EXACTA */
+.topbar {
+    background: #ffffff;
+    padding: 12px 20px;
+    font-size: 20px;
+    color: #555;
+    border-bottom: 1px solid #dcdcdc;
+    font-weight: bold;
+}
+
+/* Caja centrada */
+.login-box {
+    width: 90%;
+    max-width: 380px;
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 40px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Título */
+.login-title {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Botón */
+button {
+    width: 100%;
+    background: #11a9e0;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+a {
+    color: #11a9e0;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Texto SIU Guaraní */
+.section-title {
+    font-size: 26px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #555;
+    padding-left: 15px;
+}
+
+.text-block {
+    padding: 0 15px 30px 15px;
+    color: #333;
+    font-size: 16px;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="header">
-        <img src="https://g3w.uns.edu.ar/Guarani3w/img/logo_uns.png" class="logo">
-    </div>
+<div class="topbar">SIU Guaraní</div>
 
-    <div class="container">
+<div class="login-box">
+    <div class="login-title">Ingresá tus datos</div>
 
-        <h1>Ingresá tus datos</h1>
+    <label>Usuario</label>
+    <input type="text" id="user">
 
-        <label>Usuario</label>
-        <input type="text" placeholder="">
+    <label>Contraseña</label>
+    <input type="password" id="pass">
 
-        <label>Contraseña</label>
-        <input type="password" placeholder="">
+    <button onclick="login()">Ingresar</button>
 
-        <button class="btn">Ingresar</button>
+    <p style="text-align: center; margin-top: 10px;">
+        <a href="#">¿Olvidaste tu usuario o contraseña?</a>
+    </p>
+</div>
 
-        <a class="forgot" href="#">¿Olvidaste tu usuario o contraseña?</a>
+<div class="section-title">SIU Guaraní</div>
 
-        <h2>SIU Guaraní</h2>
+<div class="text-block">
+    <p>Con este sistema podés entre otras opciones:</p>
 
-        <p>Con este sistema podés entre otras opciones:</p>
+    <strong>Si sos alumno:</strong>
+    <ul>
+        <li>Inscribirte a cursados y exámenes.</li>
+        <li>Consultar el plan de estudios de tu carrera y tu historia académica.</li>
+        <li>Solicitar certificaciones.</li>
+    </ul>
 
-        <b>Si sos alumno:</b>
-        <ul>
-            <li>Inscribirte a cursados y exámenes.</li>
-            <li>Consultar el plan de estudios de tu carrera y tu historia académica.</li>
-            <li>Solicitar certificaciones.</li>
-        </ul>
+    <strong>Si sos docente:</strong>
+    <ul>
+        <li>Consultar tus comisiones y mesas de examen y los alumnos inscriptos.</li>
+        <li>Cargar e imprimir tus Actas Cursado y Promoción y Examen.</li>
+        <li>Obtener listados en formato pdf y xls.</li>
+    </ul>
 
-        <b>Si sos docente:</b>
-        <ul>
-            <li>Consultar tus comisiones y mesas de examen y los alumnos inscriptos.</li>
-            <li>Cargar e imprimir tus Actas Cursado y Promoción y Examen.</li>
-            <li>Obtener listados en formato pdf y xls.</li>
-        </ul>
+    <p><strong>Ingresá tu usuario y contraseña para iniciar sesión en el sistema.</strong></p>
 
-        <p><b>Ingresá tu usuario y contraseña para iniciar sesión en el sistema.</b></p>
+    <p><strong>Recordá:</strong> Tus trámites terminan cuando cerrás tu sesión.</p>
+</div>
 
-        <p class="recorda">
-            <b>Recordá:</b> Tus trámites terminan cuando cerrás tu sesión.<br>
-            Para esto, usá la opción "Cerrar Sesión" de tu Menú de Sesión en la parte superior derecha de la página.
-        </p>
+<script>
+function login() {
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
 
-    </div>
+    if (u === "jeremiasvisconti" && p === "75174637") {
+        window.location.href = "panel.html"; 
+    } else {
+        alert("Usuario o contraseña incorrectos");
+    }
+}
+</script>
 
 </body>
 </html>

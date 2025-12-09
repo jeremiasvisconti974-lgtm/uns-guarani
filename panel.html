@@ -1,62 +1,513 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Panel Académico</title>
-<link rel="stylesheet" href="style.css">
-
-<script>
-window.onload = () => {
-    const usuario = sessionStorage.getItem("usuario");
-    if (!usuario) window.location.href = "index.html";
-    document.getElementById("nombreAlumno").innerText = usuario.toUpperCase();
-}
-</script>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SIU Guaraní — Panel Académico</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="header">
-    <h2>Sistema Guaraní UNS</h2>
-</div>
+  <!-- HEADER / MENU SUPERIOR -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-text">SIU Guaraní<span class="logo-small"> — UNS</span></span>
+      </div>
 
-<div class="sidebar">
-    <p>Materias</p>
-    <p>Calificaciones</p>
-    <p>Inscripción</p>
-    <p>Perfil</p>
-</div>
+      <nav class="main-nav" aria-label="main navigation">
+        <ul>
+          <li class="nav-item home"><a href="#">Inicio</a></li>
 
-<div class="main">
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Cursadas ▾</button>
+            <ul class="sub">
+              <li><a href="#">Ver cursadas</a></li>
+              <li><a href="#">Inscripción a materias</a></li>
+              <li><a href="#">Historial</a></li>
+            </ul>
+          </li>
 
-    <h3>Alumno: <span id="nombreAlumno"></span></h3>
-    <h2>Ingeniería Civil - Materias</h2>
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Exámenes ▾</button>
+            <ul class="sub">
+              <li><a href="#">Inscripción a exámenes</a></li>
+              <li><a href="#">Turnos</a></li>
+              <li><a href="#">Actas</a></li>
+            </ul>
+          </li>
 
-    <div class="materia">
-        <h4>Cálculo I</h4>
-        Estado: Regular<br>
-        Tareas: TP Nº2 mañana
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Remediales ▾</button>
+            <ul class="sub">
+              <li><a href="#">Consulta remediales</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Matrícula ▾</button>
+            <ul class="sub">
+              <li><a href="#">Estado de matrícula</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Certificaciones ▾</button>
+            <ul class="sub">
+              <li><a href="#">Analítico</a></li>
+              <li><a href="#">Constancia alumno regular</a></li>
+            </ul>
+          </li>
+
+          <!-- === ITEM NUEVO EN EL MENÚ === -->
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Solicitud de certificados ▾</button>
+            <ul class="sub">
+              <li>
+                <a href="certificado_visconti.pdf" target="_blank">
+                  Certificado de alumno regular ✔
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- ============================= -->
+
+          <li class="nav-item has-sub active">
+            <button class="sub-btn">Consultas ▾</button>
+            <ul class="sub">
+              <li><a href="#">Historia Académica</a></li>
+              <li><a href="#">Reportes</a></li>
+              <li><a href="#">Trámites</a></li>
+              <li><a href="#">Solicitud de título</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Servicios ▾</button>
+            <ul class="sub">
+              <li><a href="#">Becas</a></li>
+              <li><a href="#">Soporte</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-sub">
+            <button class="sub-btn">Egresados ▾</button>
+            <ul class="sub">
+              <li><a href="#">Trámites egreso</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item logout"><a href="index.html">Salir</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-info">
+        Jeremías Santino Visconti — Ingeniería Civil
+      </div>
     </div>
+  </header>
 
-    <div class="materia">
-        <h4>Estabilidad I</h4>
-        Estado: Cursando<br>
-        Tareas: Problemas 3,4,7
-    </div>
+  <!-- PAGE GRID -->
+  <div class="page">
 
-    <div class="materia">
-        <h4>Hormigón Armado</h4>
-        Estado: Regular<br>
-        Tareas: Carpeta firmada
-    </div>
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-left">
+      <div class="box">
+        <h3>Marca la información que deseas ver:</h3>
 
-    <div class="materia">
-        <h4>Física II</h4>
-        Estado: Cursando<br>
-        Tareas: Guía Nº8
-    </div>
+        <div class="filter-block">
+          <h4>Cursadas</h4>
+          <label><input type="checkbox" checked data-filter="promocionada"> Promocionada</label>
+          <label><input type="checkbox" checked data-filter="aprobada"> Aprobada</label>
+          <label><input type="checkbox" checked data-filter="desaprobada"> <em>Desaprobada</em></label>
+          <label><input type="checkbox" checked data-filter="ausente"> Ausente</label>
+          <label><input type="checkbox" checked data-filter="en-curso"> En curso</label>
+        </div>
 
-</div>
+        <hr>
+
+        <div class="filter-block">
+          <h4>Exámenes</h4>
+          <label><input type="checkbox" checked data-filter="exam-aprobado"> Aprobado</label>
+          <label><input type="checkbox" checked data-filter="exam-desap"> Desaprobado</label>
+        </div>
+
+        <hr>
+
+        <div class="filter-block">
+          <h4>Equivalencias</h4>
+          <label><input type="checkbox" checked data-filter="equiv-aprobada"> Aprobada</label>
+          <label><input type="checkbox" checked data-filter="equiv-reprobada"> Reprobada</label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <div class="panel box">
+        <h1>Historia académica</h1>
+
+        <!-- DATOS DEL ALUMNO -->
+        <div class="box" style="margin:12px 0;">
+          <h4 style="color:#0b5d7a;margin:0 0 8px 0;">Datos del Alumno</h4>
+          <div style="display:flex;flex-direction:column;gap:4px;font-size:15px;color:#333;">
+            <div><strong>Nombre:</strong> Jeremías Santino Visconti</div>
+            <div><strong>DNI:</strong> 47.638.194</div>
+            <div><strong>Carrera:</strong> Ingeniería Civil</div>
+            <div><strong>Año de Ingreso:</strong> 2024</div>
+          </div>
+        </div>
+        <!-- FIN DATOS DEL ALUMNO -->
+
+        <!-- (BLOQUE "Solicitud de certificados" BORRADO AQUÍ A PETICIÓN) -->
+
+        <div class="meta">
+          <div>Plan del Alumno: <strong>2006</strong></div>
+          <div class="status-right">Estado: <strong>Alumno Regular</strong></div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <label>Año</label>
+            <select id="select-year">
+              <option value="all">Todos los años</option>
+              <option value="2024" selected>2024</option>
+              <option value="2025">2025</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>Materia</label>
+            <select id="select-materia">
+              <option value="all">Todas las materias</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <button id="btn-show-all" class="btn-blue">Mostrar Todos los Años</button>
+          </div>
+        </div>
+
+        <!-- YEAR 2024 -->
+        <div class="year-block" data-year="2024">
+          <div class="year-bar">2024</div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Matemática I (Cálculo diferencial)</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Matemática II (Cálculo integral)</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Álgebra Lineal</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Ecuaciones Diferenciales</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Probabilidad y Estadística</div>
+            <div class="subject-meta">Examen · <span class="tag green">Aprobado</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Física I</div>
+            <div class="subject-meta">Examen · <span class="tag green">Aprobado</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Química General</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Informática / Computación</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Geometría Descriptiva</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Dibujo Técnico</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+        </div> <!-- /year 2024 -->
+
+        <!-- YEAR 2025 -->
+        <div class="year-block" data-year="2025">
+          <div class="year-bar">2025</div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Física II</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject en-curso">
+            <div class="subject-title">Topografía</div>
+            <div class="subject-meta">Cursada · <span class="tag blue">En curso</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Materiales de Construcción</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject en-curso">
+            <div class="subject-title">Mecánica (Resistencia / Estática)</div>
+            <div class="subject-meta">Cursada · <span class="tag blue">En curso</span></div>
+          </div>
+
+          <div class="subject desaprobada">
+            <div class="subject-title">Mecánica de Fluidos / Hidráulica</div>
+            <div class="subject-meta">Cursada · <span class="tag red">Desaprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Resistencia de Materiales (Estructuras I)</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Geotecnia (Mecánica de Suelos)</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject en-curso">
+            <div class="subject-title">Vías de Comunicación (Transportes)</div>
+            <div class="subject-meta">Cursada · <span class="tag blue">En curso</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Construcción</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+          <div class="subject aprobada">
+            <div class="subject-title">Topografía y Saneamiento Ambiental</div>
+            <div class="subject-meta">Cursada · <span class="tag green">Aprobada</span></div>
+          </div>
+
+        </div> <!-- /year 2025 -->
+
+        <!-- NOTIFICACIONES -->
+        <div class="box" style="margin-top:12px;">
+          <h4 style="color:#0b5d7a;margin:0 0 8px 0;">Notificaciones</h4>
+          <ul style="margin:0 0 0 18px;padding:0;color:#333;">
+            <li>Inscripción a finales abierta — vence 10/03/2025</li>
+            <li>Se publicó acta de Física I</li>
+            <li>Tu constancia de alumno regular está disponible (QR en la constancia)</li>
+          </ul>
+        </div>
+
+        <!-- HISTORIAL DE EXÁMENES -->
+        <div class="box" style="margin-top:12px;">
+          <h4 style="color:#0b5d7a;margin:0 0 12px 0;">Historial de exámenes</h4>
+
+          <table style="width:100%;border-collapse:collapse">
+            <thead>
+              <tr style="text-align:left;background:#f7fbff">
+                <th style="padding:10px;border-bottom:1px solid #e9eef0">Materia</th>
+                <th style="padding:10px;border-bottom:1px solid #e9eef0">Fecha</th>
+                <th style="padding:10px;border-bottom:1px solid #e9eef0">Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Matemática I (Cálculo diferencial)</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">20/11/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">6</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Matemática II (Cálculo integral)</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">20/11/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">8</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Álgebra Lineal</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">20/11/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">8</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Ecuaciones Diferenciales</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">20/11/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">9</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Probabilidad y Estadística</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">15/06/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">9</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Física I</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">15/06/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">9</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Química General</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">20/11/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">8</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Informática / Computación</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">20/11/2024</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">7</td>
+              </tr>
+
+              <tr><td colspan="3" style="height:12px"></td></tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Física II</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">12/03/2025</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">7</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Resistencia de Materiales (Estructuras I)</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">12/03/2025</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">8</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Geotecnia (Mecánica de Suelos)</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">12/03/2025</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">8</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Construcción</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">12/03/2025</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">9</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Topografía y Saneamiento Ambiental</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">12/03/2025</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">8</td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">Mecánica de Fluidos / Hidráulica</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">10/03/2025</td>
+                <td style="padding:10px;border-bottom:1px solid #f1f4f5">4</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div> <!-- /panel -->
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar-right">
+      <div class="box">
+        <h4>Calendario Académico</h4>
+        <p><strong>2025 - Primer Cuatr.</strong></p>
+        <p>Inicio clases: 03/03/2025</p>
+        <p>Fin clases: 29/11/2025</p>
+      </div>
+
+      <div class="box">
+        <h4>Inscripciones</h4>
+        <p>Inicio inscripciones: 03/03/2025</p>
+        <p>Fin inscripciones: 10/03/2025</p>
+      </div>
+
+      <div class="box">
+        <h4>Exámenes</h4>
+        <p>Turno 2025-01</p>
+        <p>Inicio: 01/07/2025</p>
+      </div>
+    </aside>
+
+  </div> <!-- /page -->
+
+<script>
+/* SUBMENU behavior */
+document.querySelectorAll('.main-nav .has-sub').forEach(li=>{
+  const btn = li.querySelector('.sub-btn');
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    li.classList.toggle('open');
+  });
+  li.addEventListener('mouseenter', ()=> li.classList.add('open'));
+  li.addEventListener('mouseleave', ()=> li.classList.remove('open'));
+});
+
+/* Populate materia select */
+(function fillMateriaSelect(){
+  const sel = document.getElementById('select-materia');
+  const subjects = Array.from(document.querySelectorAll('.subject .subject-title')).map(n=>n.textContent.trim());
+  const unique = [...new Set(subjects)];
+  unique.forEach(s=>{
+    const opt = document.createElement('option');
+    opt.value = s;
+    opt.textContent = s;
+    sel.appendChild(opt);
+  });
+})();
+
+/* Year filter */
+const selectYear = document.getElementById('select-year');
+selectYear.addEventListener('change', ()=>{
+  const v = selectYear.value;
+  document.querySelectorAll('.year-block').forEach(block=>{
+    block.style.display = (v==='all' || block.dataset.year === v) ? '' : 'none';
+  });
+});
+
+/* Materia filter */
+document.getElementById('select-materia').addEventListener('change', function(){
+  const v = this.value;
+  document.querySelectorAll('.subject').forEach(s=>{
+    const title = s.querySelector('.subject-title').textContent.trim();
+    s.style.display = (v==='all' || v===title) ? '' : 'none';
+  });
+});
+
+/* Show all years */
+document.getElementById('btn-show-all').addEventListener('click', ()=>{
+  document.getElementById('select-year').value = 'all';
+  document.querySelectorAll('.year-block').forEach(b=> b.style.display = '');
+});
+
+/* Sidebar checkboxes */
+document.querySelectorAll('.sidebar-left input[type="checkbox"]').forEach(ch=>{
+  ch.addEventListener('change', ()=> {
+    const checked = Array.from(document.querySelectorAll('.sidebar-left input[type="checkbox"]:checked')).map(i=>i.dataset.filter);
+
+    if(checked.length===0){
+      document.querySelectorAll('.subject').forEach(s=> s.style.display = '');
+      return;
+    }
+
+    document.querySelectorAll('.subject').forEach(s=>{
+      const has = checked.some(cls => s.classList.contains(cls));
+      s.style.display = has ? '' : 'none';
+    });
+  });
+});
+</script>
 
 </body>
 </html>

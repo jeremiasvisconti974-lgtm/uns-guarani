@@ -6,170 +6,235 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* --- Reset y básicos --- */
-* { box-sizing: border-box; }
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    color: #333;
+    background: #eef0f2;
+    color: #444;
 }
 
-/* --- Barra superior con logo y menú --- */
-.topbar {
+/* ÁREA SUPERIOR */
+.header-area {
     background: #ffffff;
-    padding: 10px 14px;
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+/* TOPBAR */
+.topbar {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-uns {
+    height: 40px;
+    opacity: 0.85;
+}
+
+/* BOTÓN MENU */
+.menu-btn {
+    padding: 8px 10px;
+    font-size: 26px;
+    border: 1px solid #d3d3d3;
+    border-radius: 6px;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+
+/* MENU DESPLEGABLE */
+.dropdown-menu {
+    width: 100%;
+    background: #ffffff;
+    display: none;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+/* ÍTEMS EXACTOS COMO EN LA FOTO */
+.dropdown-item {
+    padding: 14px 22px;
     font-size: 20px;
     color: #555;
-    border-bottom: 1px solid #dcdcdc;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    font-weight: bold;
 }
 
-.logo-uns { height: 34px; }
-.menu-icon { font-size: 26px; cursor: pointer; padding: 6px 8px; color: #444; }
+/* HOVER */
+.dropdown-item:hover {
+    background: #f0f0f0;
+}
 
-/* --- Caja del login más chica y pegada a la izquierda --- */
+/* ICONO DE CASA */
+.home-img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 6px;
+}
+
+/* LOGIN BOX */
 .login-box {
-    width: 78%;                /* MÁS ANGOSTA como en tu captura */
-    max-width: 340px;          /* Ajuste perfecto */
+    width: 94%;
+    max-width: 500px;
+    margin: 26px auto;
     background: #ffffff;
-    padding: 22px 20px;
-    border-radius: 8px;
-    margin: 22px 0 0 12px;     /* PEGADO A LA IZQUIERDA */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.13);
 }
 
-/* Título pequeño como en SIU */
 .login-title {
-    font-size: 22px;
-    text-align: left;
-    color: #666;
-    margin-bottom: 14px;
-    font-weight: 600;
+    font-size: 32px;
+    font-weight: bold;
+    color: #8a8a8a;
+    margin-bottom: 22px;
 }
 
-/* Labels */
 label {
-    display: block;
-    font-size: 14px;
+    font-size: 15px;
+    color: #6d6d6d;
     margin-bottom: 4px;
+    display: block;
 }
 
-/* Inputs MÁS CHICOS y al costado */
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    height: 38px;              /* MÁS BAJITOS */
-    padding: 8px 10px;
-    font-size: 14px;
-    border: 1px solid #cfcfcf;
+    height: 46px;
+    border: 1px solid #b5b7ba;
     border-radius: 6px;
-    transition: 0.15s;
+    padding: 8px 10px;
+    font-size: 16px;
+    margin-bottom: 14px;
 }
 
 input:focus {
     outline: none;
-    border-color: #7fc0ee;
-    box-shadow: 0 0 4px rgba(35,137,221,0.20);
+    border-color: #0d8ec1;
+    box-shadow: 0 0 4px rgba(0,147,203,0.35);
 }
 
-/* Botón estilo SIU más finito */
 .btn-ingresar {
-    width: 100%;
-    height: 42px;
-    margin-top: 10px;
-    background: linear-gradient(#19aee7, #0d90bd);
-    border-radius: 8px;
-    border: none;
-    color: white;
-    font-size: 16px;
+    width: 140px;
+    height: 46px;
+    background: linear-gradient(#5fb4d1, #3b89a7);
+    border: 1px solid #2f6b85;
+    border-radius: 6px;
+    font-size: 19px;
     font-weight: bold;
+    color: white;
     cursor: pointer;
+    text-align: center;
+    line-height: 46px;
 }
 
-.btn-ingresar:hover {
-    background: linear-gradient(#17a0d0, #0b82a8);
-}
-
-/* Link */
 .forgot {
     display: block;
-    margin-top: 10px;
-    text-align: center;
-    color: #0b94c6;
-    font-size: 14px;
+    margin-top: 14px;
+    color: #7db8d6;
+    font-size: 17px;
 }
 
-/* Sección inferior */
+/* TEXTO */
 .section-title {
-    font-size: 24px;
-    margin-top: 18px;
+    margin-top: 32px;
+    font-size: 34px;
     font-weight: bold;
-    color: #555;
-    padding-left: 12px;
+    color: #8a8a8a;
 }
 
 .text-block {
-    padding: 0 14px 30px 14px;
-    color: #333;
-    font-size: 15px;
+    padding: 0 20px 50px 20px;
+    font-size: 17px;
+}
+
+.text-block b { color: #3d3d3d; }
+
+.final-link {
+    color: #79b5d4;
+    font-size: 20px;
+    font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Barra superior -->
-<div class="topbar">
-    <div style="display:flex; align-items:center; gap: 12px;">
-        <img src="logo-uns.png" class="logo-uns" alt="UNS">
-        
+<div class="header-area">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <img src="logo-uns.png" class="logo-uns">
+        <div class="menu-btn" onclick="toggleMenu()">&#9776;</div>
     </div>
-    <div class="menu-icon">&#9776;</div>
+
+    <!-- MENÚ EXACTO COMO LA FOTO -->
+    <div id="dropdownMenu" class="dropdown-menu">
+
+        <!-- SOLO LA CASITA -->
+        <div class="dropdown-item" onclick="location.href='index.html'">
+            <img src="home.jpg" class="home-img">
+        </div>
+
+        <!-- TEXTO COMO EN LA FOTO -->
+        <div class="dropdown-item" onclick="location.href='index.html'">Acceso</div>
+        <div class="dropdown-item" onclick="location.href='mesas.html'">Mesas de examen</div>
+        <div class="dropdown-item" onclick="location.href='comisiones.html'">Comisiones de cursado</div>
+
+    </div>
+
 </div>
 
-<!-- Caja login más chica y pegada al lado -->
+<!-- LOGIN -->
 <div class="login-box">
     <div class="login-title">Ingresá tus datos</div>
 
-    <label for="user">Usuario</label>
+    <label>Usuario</label>
     <input type="text" id="user">
 
-    <label for="pass">Contraseña</label>
+    <label>Contraseña</label>
     <input type="password" id="pass">
 
-    <button class="btn-ingresar" onclick="login()">Ingresar</button>
-
+    <div class="btn-ingresar" onclick="login()">Ingresar</div>
     <a class="forgot" href="#">¿Olvidaste tu usuario o contraseña?</a>
 </div>
 
-<!-- Texto abajo -->
-<div class="section-title">SIU Guaraní</div>
-
+<!-- TEXTO -->
 <div class="text-block">
+    <div class="section-title">SIU Guaraní</div>
+
     <p>Con este sistema podés entre otras opciones:</p>
 
-    <strong>Si sos alumno:</strong>
+    <p><b>Si sos alumno:</b></p>
     <ul>
         <li>Inscribirte a cursados y exámenes.</li>
         <li>Consultar el plan de estudios de tu carrera y tu historia académica.</li>
         <li>Solicitar certificaciones.</li>
     </ul>
 
-    <strong>Si sos docente:</strong>
+    <p><b>Si sos docente:</b></p>
     <ul>
-        <li>Consultar tus comisiones y mesas de examen y alumnos inscriptos.</li>
-        <li>Cargar Actas Cursado y Examen.</li>
-        <li>Obtener listados en pdf y xls.</li>
+        <li>Consultar tus comisiones y mesas de examen y los alumnos inscriptos.</li>
+        <li>Cargar e imprimir tus Actas Cursado y Promoción y Examen.</li>
+        <li>Obtener listados en formato pdf y xls.</li>
     </ul>
 
-    <p><strong>Ingresá tu usuario y contraseña para iniciar sesión en el sistema.</strong></p>
+    <p><b>Ingresá tu usuario y contraseña para iniciar sesión en el sistema.</b></p>
+
+    <p><b>Recordá:</b> Tus trámites terminan cuando cerrás tu sesión.</p>
+
+    <a class="final-link" href="#">Instructivo de Acceso a Guaraní3w</a>
 </div>
 
 <script>
+function toggleMenu() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
 function login() {
     let u = document.getElementById("user").value;
     let p = document.getElementById("pass").value;

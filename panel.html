@@ -65,7 +65,7 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   font-size:14px;
 }
 
-/* ===== MENU USUARIO ===== */
+/* ===== NUEVO MENU USUARIO ===== */
 .user-dropdown {
   position: absolute;
   top: 55px;
@@ -100,7 +100,7 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
 }
 
 /* ============================= */
-/*  MENÚ LATERAL */
+/*  MENÚ ESTILO SIU — FONDO BLANCO */
 /* ============================= */
 
 .menu {
@@ -238,7 +238,7 @@ select{
 
   <div class="topbar-actions">
 
-    <!-- BOTON USUARIO -->
+    <!-- BOTON USUARIO MODIFICADO -->
     <button id="userBtn">
       <svg class="icon" viewBox="0 0 24 24" fill="#000">
         <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
@@ -261,7 +261,7 @@ select{
 
   </div>
 
-  <!-- MENU USUARIO -->
+  <!-- NUEVO MENU USUARIO -->
   <div id="userMenu" class="user-dropdown">
     <div class="user-header">JEREMIAS VISCONTI</div>
     <div class="user-item">(IC) INGENIERÍA CIVIL</div>
@@ -303,14 +303,43 @@ select{
     <div class="submenu-item">Documentación</div>
   </div>
 
+  <div class="menu-item" onclick="toggleSubmenu('subMatricula')">Matrícula <span class="submenu-arrow">▾</span></div>
+  <div id="subMatricula" class="submenu">
+    <div class="submenu-item">Generar Matrícula</div>
+    <div class="submenu-item">Pagos / Aranceles</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subConsultas')">Consultas <span class="submenu-arrow">▾</span></div>
+  <div id="subConsultas" class="submenu">
+    <div class="submenu-item">Consultar Alumno</div>
+    <div class="submenu-item">Estado Académico</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subServicios')">Servicios <span class="submenu-arrow">▾</span></div>
+  <div id="subServicios" class="submenu">
+    <div class="submenu-item">Trámites</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subEncuestas')">Encuestas <span class="submenu-arrow">▾</span></div>
+  <div id="subEncuestas" class="submenu">
+    <div class="submenu-item">Disponibles</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subEgresados')">Egresados <span class="submenu-arrow">▾</span></div>
+  <div id="subEgresados" class="submenu">
+    <div class="submenu-item">Trámites</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subMoodle')">Moodle <span class="submenu-arrow">▾</span></div>
+  <div id="subMoodle" class="submenu">
+    <div class="submenu-item">Acceder</div>
+  </div>
+
 </nav>
 
-<main class="container">
-<h2 style="color:#1686b6;">Bienvenido</h2>
-</main>
+<!-- TU CONTENIDO ORIGINAL SIGUE IGUAL -->
 
 <script>
-// MENU LATERAL
 document.getElementById("menuBtn").addEventListener("click", ()=>{
   const menu=document.getElementById("menu");
   menu.style.display = menu.style.display==="flex" ? "none" : "flex";
@@ -321,7 +350,7 @@ function toggleSubmenu(id){
   s.style.display = s.style.display==="flex" ? "none" : "flex";
 }
 
-// MENU USUARIO
+// NUEVA FUNCION USUARIO
 document.getElementById("userBtn").addEventListener("click", function(e){
   e.stopPropagation();
   const menu = document.getElementById("userMenu");

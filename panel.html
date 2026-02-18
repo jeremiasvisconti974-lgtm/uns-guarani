@@ -32,104 +32,37 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   object-fit:contain;
 }
 
-/* BOTONES SUPERIORES */
+/* ACCIONES */
 .topbar-actions{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-.topbar-actions button{
-  width:48px;
-  height:40px;
-  border-radius:6px;
-  border:1px solid #dcdcdc;
-  background:#f9f9f9;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-}
-
-.topbar-actions button:hover{
-  background:#efefef;
-}
-
-.icon{
-  width:20px;
-  height:20px;
-}
-
-.arrow{
-  font-size:10px;
-  position:absolute;
-  bottom:5px;
-  right:6px;
-}
-
-/* MAIL */
-.mail-box{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-}
-
-.mail-count{
-  font-size:13px;
-  color:#000;
-}
-
-/* ===== MENU USUARIO ===== */
-.user-dropdown {
-  position:absolute;
-  top:58px;
-  right:12px;
-  width:270px;
-  background:#fff;
-  border:1px solid #dcdcdc;
-  box-shadow:0 3px 8px rgba(0,0,0,0.2);
-  display:none;
-  z-index:999;
-  animation:fadeDown .2s ease;
-}
-
-@keyframes fadeDown{
-  from{opacity:0; transform:translateY(-5px)}
-  to{opacity:1; transform:translateY(0)}
-}
-
-.user-header{
-  padding:14px;
-  font-weight:bold;
-  border-bottom:1px solid #e5e5e5;
-}
-
-.user-section{
-  padding:10px 14px;
-  font-size:13px;
-  color:#666;
-  border-bottom:1px solid #e5e5e5;
-}
-
-.user-item{
-  padding:12px 14px;
-  cursor:pointer;
   display:flex;
   align-items:center;
   gap:8px;
 }
 
-.user-item:hover{
-  background:#f5f5f5;
+.topbar-actions button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px;
+  height:40px;
+  border-radius:6px;
+  border:1px solid #e6e9ec;
+  background:#fafafa;
+  cursor:pointer;
+  font-size:15px;
+  gap:6px;
 }
 
-.user-divider{
-  border-top:1px solid #e5e5e5;
+.icon{
+  width:22px;
+  height:22px;
 }
 
-/* ======================= */
+.mail-count{
+  color:#1690c7;
+  font-weight:700;
+  font-size:14px;
+}
 
 /* MENU PRINCIPAL */
 .menu {
@@ -137,6 +70,7 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   background:#ffffff;
   display:none;
   flex-direction:column;
+  padding:0;
 }
 
 .menu-item {
@@ -146,8 +80,18 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   color:#333;
   cursor:pointer;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  gap:8px;
+}
+
+.submenu-arrow{
+  font-size:16px;
+  opacity:.7;
+}
+
+.menu-item img{
+  width:26px;
+  height:26px;
 }
 
 .submenu{
@@ -158,8 +102,9 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
 }
 
 .submenu-item{
-  padding:8px 0;
+  padding:6px 0;
   font-size:17px;
+  color:#444;
 }
 
 .menu-item:hover{background:#f3f3f3;}
@@ -177,37 +122,98 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   border:1px solid #d0d0d0;
   padding:18px;
   border-radius:4px;
+  font-size:14px;
+  line-height:1.45;
 }
 
-/* CAJAS */
+/* ===== MENU USUARIO ===== */
+.user-dropdown {
+  position:absolute;
+  top:60px;
+  right:12px;
+  width:260px;
+  background:#fff;
+  border:1px solid #dcdcdc;
+  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  display:none;
+  z-index:999;
+}
+
+.user-header{
+  padding:14px;
+  font-weight:bold;
+  border-bottom:1px solid #eee;
+}
+
+.user-item{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  cursor:pointer;
+}
+
+.user-item:last-child{
+  border-bottom:none;
+}
+
+.user-item:hover{
+  background:#f5f5f5;
+}
+/* ======================= */
+
 .header-box{
   background:#eef6fb;
   border:1px solid #dbe8ef;
   padding:10px 12px;
   border-radius:4px;
+  margin-bottom:15px;
 }
 
 .header-box-title{
   color:#1686b6;
+  font-size:14px;
+  margin-bottom:6px;
   font-weight:700;
 }
 
 .red{
   color:#cc0000;
   font-weight:700;
+  margin-bottom:10px;
+  font-size:14px;
 }
 
 .title{
   font-weight:700;
   color:#666;
   margin-top:12px;
+  margin-bottom:6px;
+  font-size:15px;
+}
+
+ul{
+  padding-left:20px;
+  margin-top:5px;
+  color:#222;
+}
+
+ul li{
+  margin-bottom:6px;
+}
+
+select{
+  width:100%;
+  padding:8px;
+  border-radius:4px;
+  border:1px solid #d6dae0;
+  background:#fff;
 }
 
 .exam-msg{
   background:#eef5fb;
   border-top:1px solid #c9dae7;
-  padding:10px;
+  padding:10px 12px;
   color:#0b6fb8;
+  font-size:14px;
   margin-top:6px;
 }
 </style>
@@ -219,32 +225,28 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
 <div class="topbar">
 
   <div class="topbar-left">
-    <img src="logo-uns.png" class="logo-img">
+    <img src="logo-uns.png" alt="UNS" class="logo-img">
   </div>
 
   <div class="topbar-actions">
 
-    <!-- USUARIO -->
+    <!-- BOTON USUARIO -->
     <button id="userBtn">
-      <svg class="icon" viewBox="0 0 24 24">
+      <svg class="icon" viewBox="0 0 24 24" fill="#000">
         <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
       </svg>
-      <span class="arrow">▼</span>
+      <span style="font-size:14px;">▾</span>
     </button>
 
-    <!-- MAIL -->
     <button>
-      <div class="mail-box">
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8z"/>
-        </svg>
-        <span class="mail-count">0</span>
-      </div>
+      <svg class="icon" viewBox="0 0 24 24" fill="#000">
+        <path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8z"/>
+      </svg>
+      <span class="mail-count">0</span>
     </button>
 
-    <!-- MENU -->
     <button id="menuBtn">
-      <svg class="icon" viewBox="0 0 24 24">
+      <svg class="icon" viewBox="0 0 24 24" fill="#000">
         <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
       </svg>
     </button>
@@ -254,25 +256,76 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
 
 <!-- MENU USUARIO -->
 <div id="userMenu" class="user-dropdown">
-  <div class="user-header">JOSEFINA BELLUCCI</div>
-
-  <div class="user-section">CARRERAS</div>
-
-  <div class="user-item">✔ (190) PROFES. DE EDUCACION INICIAL</div>
-  <div class="user-item">(EXT) EXTRACURRICULAR</div>
-  <div class="user-item">(IDIO) IDIOMAS</div>
-
-  <div class="user-divider"></div>
-
-  <div class="user-item">⚙ Configuración</div>
-  <div class="user-item" onclick="location.href='index.html'">⏻ Cerrar sesión</div>
+  <div class="user-header">JEREMIAS VISCONTI</div>
+  <div class="user-item">(IC) INGENIERÍA CIVIL</div>
+  <div class="user-item">Configuración</div>
+  <div class="user-item" onclick="location.href='index.html'">Cerrar sesión</div>
 </div>
 
 <!-- MENÚ -->
 <nav id="menu" class="menu">
-  <div class="menu-item">Cursadas</div>
-  <div class="menu-item">Exámenes</div>
-  <div class="menu-item">Certificaciones</div>
+
+  <div class="menu-item" onclick="location.href='index.html'">
+    <img src="home.jpg">
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subCursadas')">Cursadas <span class="submenu-arrow">▾</span></div>
+  <div id="subCursadas" class="submenu">
+    <div class="submenu-item">Inscripción</div>
+    <div class="submenu-item" onclick="location.href='cursadas.html'">Seguimiento de certifado</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subExamenes')">Exámenes <span class="submenu-arrow">▾</span></div>
+  <div id="subExamenes" class="submenu">
+    <div class="submenu-item">Inscripción a Exámenes</div>
+    <div class="submenu-item">Mis Mesas</div>
+    <div class="submenu-item">Historial</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subCertificados')">Certificaciones <span class="submenu-arrow">▾</span></div>
+  <div id="subCertificados" class="submenu">
+    <div class="submenu-item" onclick="location.href='certificado_visconti.pdf'">Solicitud de Certificado</div>
+    <div class="submenu-item">Consulta / Anulación</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subIngreso')">Ingreso <span class="submenu-arrow">▾</span></div>
+  <div id="subIngreso" class="submenu">
+    <div class="submenu-item">Requisitos</div>
+    <div class="submenu-item">Documentación</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subMatricula')">Matrícula <span class="submenu-arrow">▾</span></div>
+  <div id="subMatricula" class="submenu">
+    <div class="submenu-item">Generar Matrícula</div>
+    <div class="submenu-item">Pagos / Aranceles</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subConsultas')">Consultas <span class="submenu-arrow">▾</span></div>
+  <div id="subConsultas" class="submenu">
+    <div class="submenu-item">Consultar Alumno</div>
+    <div class="submenu-item">Estado Académico</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subServicios')">Servicios <span class="submenu-arrow">▾</span></div>
+  <div id="subServicios" class="submenu">
+    <div class="submenu-item">Trámites</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subEncuestas')">Encuestas <span class="submenu-arrow">▾</span></div>
+  <div id="subEncuestas" class="submenu">
+    <div class="submenu-item">Disponibles</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subEgresados')">Egresados <span class="submenu-arrow">▾</span></div>
+  <div id="subEgresados" class="submenu">
+    <div class="submenu-item">Trámites</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subMoodle')">Moodle <span class="submenu-arrow">▾</span></div>
+  <div id="subMoodle" class="submenu">
+    <div class="submenu-item">Acceder</div>
+  </div>
+
 </nav>
 
 <main class="container">
@@ -280,39 +333,64 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
 <h2 style="color:#1686b6;">Bienvenido</h2>
 
 <div class="card">
+
 <div class="header-box">
   <div class="header-box-title">Calendario Académico</div>
   <div class="red">Actualizá tu MAIL</div>
 
-  <div class="title">Cursadas</div>
+  <div class="title">Inscripciones</div>
+  <ul>
+    <li>101 - Matemáticas</li>
+    <li>102 - Física</li>
+    <li>103 - Construcción</li>
+    <li>104 - Estructuras</li>
+    <li>105 - Geotecnia</li>
+    <li>106 - Hidráulica</li>
+    <li>107 - Transporte</li>
+    <li>108 - Gestión de Proyectos</li>
+  </ul>
 
-  <p><b>Inicio Clases:</b> 16/03/2026<br>
-     <b>Fin Clases:</b> 03/07/2026<br>
-     <b>Inicio Inscripciones:</b> 02/03/2026<br>
-     <b>Fin Inscripciones:</b> 27/03/2026<br>
-     <b>Correlativas hasta:</b> 19/04/2026</p>
+  <div class="title">Cursadas</div>
+  <select><option>2026 - Segundo Cuatr.</option></select>
+
+  <p><b>Inicio:</b> 18/08/2026<br>
+     <b>Fin:</b> 5/12/2026<br>
+     <b>Inscripciones:</b> 04/08 - 06/09<br>
+     <b>Correlativas:</b> hasta 19/09</p>
+
+  <div class="title">Exámenes</div>
+  <select><option>Turno 2026-12</option></select>
+
+  <p><b>Inicio:</b> 02/02/2026<br>
+     <b>Fin:</b> 28/11/2026</p>
 
   <div class="title">Inscripciones</div>
-  <div class="exam-msg">No tenés inscripciones a cursadas vigentes para el período lectivo y la carrera seleccionados.</div>
+  <div class="exam-msg">No tenés inscripciones a exámenes vigentes para el turno seleccionado.</div>
 
 </div>
 </div>
 </main>
 
 <script>
-document.getElementById("menuBtn").onclick = ()=>{
-  const m=document.getElementById("menu");
-  m.style.display = m.style.display==="flex" ? "none" : "flex";
-};
+document.getElementById("menuBtn").addEventListener("click", ()=>{
+  const menu=document.getElementById("menu");
+  menu.style.display = menu.style.display==="flex" ? "none" : "flex";
+});
 
-document.getElementById("userBtn").onclick = (e)=>{
+function toggleSubmenu(id){
+  const s=document.getElementById(id);
+  s.style.display = s.style.display==="flex" ? "none" : "flex";
+}
+
+/* MENU USUARIO */
+document.getElementById("userBtn").addEventListener("click", function(e){
   e.stopPropagation();
-  const u=document.getElementById("userMenu");
-  u.style.display = u.style.display==="block" ? "none" : "block";
-};
+  const menu = document.getElementById("userMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
 
-document.addEventListener("click", ()=>{
-  document.getElementById("userMenu").style.display="none";
+document.addEventListener("click", function(){
+  document.getElementById("userMenu").style.display = "none";
 });
 </script>
 

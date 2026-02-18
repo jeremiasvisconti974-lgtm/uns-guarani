@@ -6,141 +6,160 @@
 <title>SIU Guaraní — Panel Académico</title>
 
 <style>
-/* ----- reset & base ----- */
 *{box-sizing:border-box}
 body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color:#222;}
 
-/* ----- header / topbar ----- */
+/* TOPBAR */
 .topbar {
   width:100%;
   background:#ffffff;
-  border-bottom:1px solid #e1e4e8;
+  border-bottom:1px solid #dcdcdc;
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:8px 12px;
-  gap:12px;
-  position:relative;
-  z-index:1000;
 }
 
-/* left area: logo + home */
 .topbar-left{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-/* TU LOGO REAL (PNG) */
 .logo-img{
-  width:40px;
-  height:40px;
+  width:45px;
+  height:45px;
   object-fit:contain;
-  border-radius:4px;
 }
 
-/* home button */
-.home-btn{
+/* ACCIONES */
+.topbar-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.topbar-actions button{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:40px;
+  padding:0 10px;
   height:40px;
   border-radius:6px;
-  background:#f7fbff;
-  border:1px solid #dfe7ea;
+  border:1px solid #e6e9ec;
+  background:#fafafa;
   cursor:pointer;
-  color:#0b5d7a;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  font-size:15px;
+  gap:6px;
 }
 
-/* right actions */
-.topbar-actions{display:flex;align-items:center;gap:8px}
-.topbar-actions button{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:44px;height:40px;border-radius:6px;
-  border:1px solid #e6e9ec;background:#fafafa;cursor:pointer;
-  box-shadow:0 1px 0 rgba(0,0,0,0.02);
+.icon{
+  width:22px;
+  height:22px;
 }
-.topbar-actions button .icon{width:22px;height:22px}
 
-/* numeric badge */
 .mail-count{
   color:#1690c7;
   font-weight:700;
-  margin-left:6px;
   font-size:14px;
 }
 
-/* ----- main menu ----- */
+/* ============================= */
+/*  MENÚ ESTILO SIU — FONDO BLANCO */
+/* ============================= */
+
 .menu {
   width:100%;
-  background:#ffffff;
-  border-bottom:1px solid #cfcfcf;
+  background:#ffffff;   /* ← CAMBIADO A BLANCO */
   display:none;
   flex-direction:column;
-  padding-top:10px;
-  padding-bottom:10px;
-  z-index:50;
+  padding:0;
 }
 
+/* ítems principales */
 .menu-item {
-  padding:14px 18px;
-  font-size:17px;
-  color:#444;
-  border-bottom:1px solid #e5e5e5;
+  padding:18px 24px;
+  font-size:20px;
+  font-weight:600;
+  color:#333;
   cursor:pointer;
   display:flex;
   align-items:center;
   gap:8px;
 }
-.menu-item:hover{background:#f2f2f2}
 
+/* flechita */
+.submenu-arrow{
+  font-size:16px;
+  opacity:.7;
+}
+
+/* HOME */
+.menu-item img{
+  width:26px;
+  height:26px;
+}
+
+/* submenú */
 .submenu{
   display:none;
   flex-direction:column;
-  background:#fafafa;
-  border-left:3px solid #d0d0d0;
+  background:#f7f7f7;   /* ← GRIS SUAVE QUE COMBINA */
+  padding-left:28px;
 }
-.submenu-item{
-  padding:12px 30px;
-  font-size:15px;
-  border-bottom:1px solid #e5e5e5;
-  color:#555;
-  cursor:pointer;
-}
-.submenu-item:hover{background:#efefef}
-.submenu-arrow{margin-left:auto;font-size:15px;opacity:.8}
 
-/* ----- layout ----- */
+.submenu-item{
+  padding:6px 0;
+  font-size:17px;
+  color:#444;
+}
+
+/* hover */
+.menu-item:hover{
+  background:#f3f3f3;   /* ← SUAVE */
+}
+.submenu-item:hover{
+  background:#e9e9e9;
+}
+
+/* CONTENIDO */
 .container{
   width:92%;
   max-width:750px;
   margin:18px auto;
 }
-.card{background:#fff;border:1px solid #d0d0d0;padding:18px;border-radius:4px;font-size:14px;line-height:1.45}
 
-/* celeste box */
+.card{
+  background:#fff;
+  border:1px solid #d0d0d0;
+  padding:18px;
+  border-radius:4px;
+  font-size:14px;
+  line-height:1.45;
+}
+
 .header-box{
   background:#eef6fb;
   border:1px solid #dbe8ef;
   padding:10px 12px;
   border-radius:4px;
   margin-bottom:15px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
+
 .header-box-title{
   color:#1686b6;
   font-size:14px;
   margin-bottom:6px;
   font-weight:700;
 }
+
 .red{
   color:#cc0000;
   font-weight:700;
   margin-bottom:10px;
   font-size:14px;
 }
+
 .title{
   font-weight:700;
   color:#666;
@@ -148,8 +167,16 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   margin-bottom:6px;
   font-size:15px;
 }
-ul{padding-left:20px;margin-top:5px;color:#222}
-ul li{margin-bottom:6px}
+
+ul{
+  padding-left:20px;
+  margin-top:5px;
+  color:#222;
+}
+
+ul li{
+  margin-bottom:6px;
+}
 
 select{
   width:100%;
@@ -167,11 +194,6 @@ select{
   font-size:14px;
   margin-top:6px;
 }
-
-@media (max-width:980px){
-  .container{width:96%}
-  .menu{display:flex}
-}
 </style>
 </head>
 
@@ -181,17 +203,7 @@ select{
 <div class="topbar">
 
   <div class="topbar-left">
-
-    <!-- TU LOGO REAL -->
     <img src="logo-uns.png" alt="UNS" class="logo-img">
-
-    <!-- home button -->
-    <button class="home-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="#0b5d7a">
-        <path d="M12 3l9 7v11H6v-7H9v7H4V10z"/>
-      </svg>
-    </button>
-
   </div>
 
   <div class="topbar-actions">
@@ -200,6 +212,7 @@ select{
       <svg class="icon" viewBox="0 0 24 24" fill="#000">
         <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
       </svg>
+      <span style="font-size:14px;">▾</span>
     </button>
 
     <button>
@@ -218,40 +231,32 @@ select{
   </div>
 </div>
 
-<!-- MENU -->
-<nav id="menu" class="menu" aria-hidden="true">
+<!-- MENÚ -->
+<nav id="menu" class="menu">
 
-  <div class="menu-item" onclick="toggleSubmenu('subCursadas')">
-    Cursadas <span class="submenu-arrow">▾</span>
+  <!-- HOME -->
+  <div class="menu-item" onclick="location.href='index.html'">
+    <img src="home.jpg">
   </div>
 
+  <!-- TODOS LOS SUBMENÚS -->
+  <div class="menu-item" onclick="toggleSubmenu('subCursadas')">Cursadas <span class="submenu-arrow">▾</span></div>
   <div id="subCursadas" class="submenu">
-
     <div class="submenu-item">Inscripción</div>
+    <div class="submenu-item" onclick="location.href='cursadas.html'">Seguimiento de certifado</div></div>
 
-    <!-- ✅ SOLO EDITÉ ESTA LÍNEA -->
-    <div class="submenu-item" onclick="location.href='cursadas.html'">Seguimiento</div>
-
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('subExamenes')">
-    Exámenes <span class="submenu-arrow">▾</span>
-  </div>
+  <div class="menu-item" onclick="toggleSubmenu('subExamenes')">Exámenes <span class="submenu-arrow">▾</span></div>
   <div id="subExamenes" class="submenu">
     <div class="submenu-item">Inscripción a Exámenes</div>
     <div class="submenu-item">Mis Mesas</div>
     <div class="submenu-item">Historial</div>
   </div>
 
-  <div class="menu-item" onclick="toggleSubmenu('subCertificados')">
-    Certificaciones <span class="submenu-arrow">▾</span>
-  </div>
-  <div id="subCertificados" class="submenu">
-    <div class="submenu-item" onclick="window.open('certificado_visconti.pdf','_blank')">
-      Solicitud de Certificados
-    </div>
-    <div class="submenu-item">Consulta / Anulación</div>
-  </div>
+  <div class="menu-item" onclick="toggleSubmenu('subCertificados')">Certificaciones <span class="submenu-arrow">▾</span></div>
+<div id="subCertificados" class="submenu">
+  <div class="submenu-item" onclick="location.href='certificado_visconti.pdf'">Solicitud de Certificado</div>
+  <div class="submenu-item">Consulta / Anulación</div>
+</div>
 
   <div class="menu-item" onclick="toggleSubmenu('subIngreso')">Ingreso <span class="submenu-arrow">▾</span></div>
   <div id="subIngreso" class="submenu">
@@ -271,67 +276,77 @@ select{
     <div class="submenu-item">Estado Académico</div>
   </div>
 
-  <div class="menu-item">Servicios</div>
-  <div class="menu-item">Encuestas</div>
-  <div class="menu-item">Egresados</div>
-  <div class="menu-item">Moodle</div>
+  <div class="menu-item" onclick="toggleSubmenu('subServicios')">Servicios <span class="submenu-arrow">▾</span></div>
+  <div id="subServicios" class="submenu">
+    <div class="submenu-item">Trámites</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subEncuestas')">Encuestas <span class="submenu-arrow">▾</span></div>
+  <div id="subEncuestas" class="submenu">
+    <div class="submenu-item">Disponibles</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subEgresados')">Egresados <span class="submenu-arrow">▾</span></div>
+  <div id="subEgresados" class="submenu">
+    <div class="submenu-item">Trámites</div>
+  </div>
+
+  <div class="menu-item" onclick="toggleSubmenu('subMoodle')">Moodle <span class="submenu-arrow">▾</span></div>
+  <div id="subMoodle" class="submenu">
+    <div class="submenu-item">Acceder</div>
+  </div>
 
 </nav>
 
-<!-- CONTENIDO -->
 <main class="container">
-  <h2 style="color:#1686b6;">Bienvenido</h2>
 
-  <div class="card">
-    <div class="header-box">
-      <div class="header-box-title">Calendario Académico</div>
-      <div class="red">Actualizá tu MAIL</div>
+<h2 style="color:#1686b6;">Bienvenido</h2>
 
-      <div class="title">Inscripciones</div>
-      <ul>
-        <li>101 - Matemáticas</li>
-        <li>102 - Física</li>
-        <li>103 - Construcción</li>
-        <li>104 - Estructuras</li>
-        <li>105 - Geotecnia</li>
-        <li>106 - Hidráulica</li>
-        <li>107 - Transporte</li>
-        <li>108 - Gestión de Proyectos</li>
-      </ul>
+<div class="card">
 
-      <div class="title">Cursadas</div>
-      <select><option>2025 - Segundo Cuatr.</option></select>
+<div class="header-box">
+  <div class="header-box-title">Calendario Académico</div>
+  <div class="red">Actualizá tu MAIL</div>
 
-      <p><b>Inicio:</b> 18/08/2025<br>
-      <b>Fin:</b> 05/12/2025<br>
-      <b>Inscripciones:</b> 04/08 - 06/09<br>
-      <b>Correlativas:</b> hasta 19/09</p>
+  <div class="title">Inscripciones</div>
+  <ul>
+    <li>101 - Matemáticas</li>
+    <li>102 - Física</li>
+    <li>103 - Construcción</li>
+    <li>104 - Estructuras</li>
+    <li>105 - Geotecnia</li>
+    <li>106 - Hidráulica</li>
+    <li>107 - Transporte</li>
+    <li>108 - Gestión de Proyectos</li>
+  </ul>
 
-      <div class="title">Exámenes</div>
-      <select><option>Turno 2025-12</option></select>
+  <div class="title">Cursadas</div>
+  <select><option>2025 - Segundo Cuatr.</option></select>
 
-      <p><b>Inicio:</b> 01/12/2025<br>
-      <b>Fin:</b> 30/12/2025</p>
+  <p><b>Inicio:</b> 18/08/2025<br>
+     <b>Fin:</b> 05/12/2025<br>
+     <b>Inscripciones:</b> 04/08 - 06/09<br>
+     <b>Correlativas:</b> hasta 19/09</p>
 
-      <div class="title">Inscripciones</div>
-      <div class="exam-msg">
-        No tenés inscripciones a exámenes vigentes para el turno seleccionado.
-      </div>
+  <div class="title">Exámenes</div>
+  <select><option>Turno 2025-12</option></select>
 
-    </div>
-  </div>
+  <p><b>Inicio:</b> 01/12/2025<br>
+     <b>Fin:</b> 30/12/2025</p>
 
+  <div class="title">Inscripciones</div>
+  <div class="exam-msg">No tenés inscripciones a exámenes vigentes para el turno seleccionado.</div>
+
+</div>
+</div>
 </main>
 
 <script>
-// menu toggle
 document.getElementById("menuBtn").addEventListener("click", ()=>{
-  const menu = document.getElementById("menu");
-  const isOpen = menu.style.display === "flex";
-  menu.style.display = isOpen ? "none" : "flex";
+  const menu=document.getElementById("menu");
+  menu.style.display = menu.style.display==="flex" ? "none" : "flex";
 });
 
-// submenu toggle
 function toggleSubmenu(id){
   const s=document.getElementById(id);
   s.style.display = s.style.display==="flex" ? "none" : "flex";

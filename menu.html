@@ -4,8 +4,85 @@
     <meta charset="UTF-8">
     <title>Menú Principal</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Botón usuario */
+        .user-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Menú desplegable */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-header {
+            font-weight: bold;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .dropdown-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: #f5f5f5;
+        }
+
+        .menu {
+            margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- BOTÓN PERSONITA -->
+    <div class="user-btn" onclick="toggleMenu()">
+        👤
+    </div>
+
+    <!-- MENÚ DESPLEGABLE -->
+    <div class="dropdown" id="userMenu">
+        <div class="dropdown-header">
+            JEREMIAS VISCONTI
+        </div>
+
+        <div class="dropdown-item">
+            (IC) INGENIERÍA CIVIL
+        </div>
+
+        <div class="dropdown-item">
+            Configuración
+        </div>
+
+        <div class="dropdown-item">
+            <a href="index.html">Cerrar sesión</a>
+        </div>
+    </div>
+
     <h1>Menú Principal</h1>
 
     <ul class="menu">
@@ -16,5 +93,23 @@
         <li><a href="#">Certificados</a></li>
         <li><a href="index.html">Cerrar sesión</a></li>
     </ul>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("userMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        // Cerrar si tocás afuera
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("userMenu");
+            var button = document.querySelector(".user-btn");
+
+            if (!button.contains(event.target) && !menu.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
+
 </body>
 </html>

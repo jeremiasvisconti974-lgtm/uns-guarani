@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Comisiones de cursado</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    margin: 0;
+}
+
+/* Topbar */
+.topbar {
+    background: #ffffff;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.logo-uns {
+    height: 42px;
+    opacity: 0.8;
+}
+
+.menu-icon {
+    font-size: 26px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #d3d3d3;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Side Menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: white;
+    overflow: hidden;
+    transition: 0.25s;
+    border-right: 1px solid #dcdcdc;
+    padding-top: 20px;
+}
+
+.side-menu.open {
+    width: 260px;
+}
+
+.menu-item {
+    padding: 16px 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #e7e7e7;
+    cursor: pointer;
+}
+.menu-item:hover {
+    background: #f3f3f3;
+}
+
+/* Título */
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #0090d0;
+    margin: 20px;
+}
+
+/* Form */
+label {
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+select {
+    width: calc(100% - 40px);
+    margin: 10px 20px 20px 20px;
+    height: 46px;
+    font-size: 17px;
+    border-radius: 6px;
+    border: 1px solid #b5b7ba;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div id="sideMenu" class="side-menu">
+    <div class="menu-item" onclick="location.href='index.html'">Acceso</div>
+    <div class="menu-item" onclick="location.href='mesas.html'">Mesas de Examen</div>
+    <div class="menu-item" onclick="location.href='comisiones.html'">Comisiones de Cursado</div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+    <img src="logo-uns.png" class="logo-uns">
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+</div>
+
+<div class="page-title">Comisiones de cursado</div>
+
+<label>Periodo Lectivo</label>
+<select>
+    <option>-- Seleccione un Periodo Lectivo --</option>
+</select>
+
+<label>Departamento Académico</label>
+<select>
+    <option>-- Seleccione un Departamento Académico --</option>
+</select>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>

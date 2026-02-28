@@ -32,36 +32,40 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   object-fit:contain;
 }
 
-/* ACCIONES */
+/* ACCIONES (ESTILO SIU) */
 .topbar-actions{
   display:flex;
   align-items:center;
-  gap:8px;
-}
-
-.topbar-actions button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:0 10px;
-  height:40px;
-  border-radius:6px;
-  border:1px solid #e6e9ec;
-  background:#fafafa;
-  cursor:pointer;
-  font-size:15px;
   gap:6px;
 }
 
+.topbar-actions button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:36px;
+  min-width:36px;
+  padding:0 8px;
+  border-radius:4px;
+  border:1px solid #dcdcdc;
+  background:#f7f7f7;
+  cursor:pointer;
+  gap:4px;
+}
+
+.topbar-actions button:hover{
+  background:#ececec;
+}
+
 .icon{
-  width:22px;
-  height:22px;
+  width:18px;
+  height:18px;
 }
 
 .mail-count{
-  color:#1690c7;
-  font-weight:700;
-  font-size:14px;
+  color:#0073aa;
+  font-weight:600;
+  font-size:13px;
 }
 
 /* MENU PRINCIPAL */
@@ -126,37 +130,46 @@ body{margin:0;font-family: Arial, Helvetica, sans-serif;background:#f2f4f6;color
   line-height:1.45;
 }
 
-/* ===== MENU USUARIO ===== */
+/* ===== MENU USUARIO (ESTILO SIU REAL) ===== */
 .user-dropdown {
   position:absolute;
-  top:60px;
-  right:12px;
-  width:260px;
+  top:55px;
+  right:10px;
+  width:280px;
   background:#fff;
   border:1px solid #dcdcdc;
-  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
   display:none;
   z-index:999;
+  font-size:14px;
 }
 
 .user-header{
-  padding:14px;
-  font-weight:bold;
+  padding:12px;
+  font-weight:700;
+  background:#f7f7f7;
+  border-bottom:1px solid #e5e5e5;
+}
+
+.user-section{
+  padding:10px 12px;
   border-bottom:1px solid #eee;
+}
+
+.user-section-title{
+  font-weight:700;
+  font-size:13px;
+  color:#666;
+  margin-bottom:6px;
 }
 
 .user-item{
-  padding:12px;
-  border-bottom:1px solid #eee;
+  padding:10px 12px;
   cursor:pointer;
 }
 
-.user-item:last-child{
-  border-bottom:none;
-}
-
 .user-item:hover{
-  background:#f5f5f5;
+  background:#f2f2f2;
 }
 /* ======================= */
 
@@ -230,23 +243,25 @@ select{
 
   <div class="topbar-actions">
 
-    <!-- BOTON USUARIO -->
+    <!-- USUARIO -->
     <button id="userBtn">
-      <svg class="icon" viewBox="0 0 24 24" fill="#000">
-        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+      <svg class="icon" viewBox="0 0 24 24" fill="#444">
+        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-8 1.7-8 4v2h16v-2c0-2.3-4.7-4-8-4z"/>
       </svg>
-      <span style="font-size:14px;">▾</span>
+      <span style="font-size:12px;color:#555;">▾</span>
     </button>
 
+    <!-- MAIL -->
     <button>
-      <svg class="icon" viewBox="0 0 24 24" fill="#000">
-        <path d="M12 13 2 6h20l-10 7zm0 2L2 8v10h20V8z"/>
+      <svg class="icon" viewBox="0 0 24 24" fill="#444">
+        <path d="M2 6h20l-10 7L2 6zm0 2v10h20V8l-10 7L2 8z"/>
       </svg>
       <span class="mail-count">0</span>
     </button>
 
+    <!-- MENU -->
     <button id="menuBtn">
-      <svg class="icon" viewBox="0 0 24 24" fill="#000">
+      <svg class="icon" viewBox="0 0 24 24" fill="#444">
         <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
       </svg>
     </button>
@@ -256,10 +271,17 @@ select{
 
 <!-- MENU USUARIO -->
 <div id="userMenu" class="user-dropdown">
+
   <div class="user-header">JEREMIAS VISCONTI</div>
-  <div class="user-item">(IC) INGENIERÍA CIVIL</div>
-  <div class="user-item">Configuración</div>
-  <div class="user-item" onclick="location.href='index.html'">Cerrar sesión</div>
+
+  <div class="user-section">
+    <div class="user-section-title">CARRERAS</div>
+    <div class="user-item">✔ (IC) INGENIERÍA CIVIL</div>
+  </div>
+
+  <div class="user-item">⚙ Configuración</div>
+  <div class="user-item" onclick="location.href='index.html'">⏻ Cerrar sesión</div>
+
 </div>
 
 <!-- MENÚ -->
@@ -300,76 +322,7 @@ select{
     <div class="submenu-item">Pagos / Aranceles</div>
   </div>
 
-  <div class="menu-item" onclick="toggleSubmenu('subConsultas')">Consultas <span class="submenu-arrow">▾</span></div>
-  <div id="subConsultas" class="submenu">
-    <div class="submenu-item">Consultar Alumno</div>
-    <div class="submenu-item">Estado Académico</div>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('subServicios')">Servicios <span class="submenu-arrow">▾</span></div>
-  <div id="subServicios" class="submenu">
-    <div class="submenu-item">Trámites</div>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('subEncuestas')">Encuestas <span class="submenu-arrow">▾</span></div>
-  <div id="subEncuestas" class="submenu">
-    <div class="submenu-item">Disponibles</div>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('subEgresados')">Egresados <span class="submenu-arrow">▾</span></div>
-  <div id="subEgresados" class="submenu">
-    <div class="submenu-item">Trámites</div>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('subMoodle')">Moodle <span class="submenu-arrow">▾</span></div>
-  <div id="subMoodle" class="submenu">
-    <div class="submenu-item">Acceder</div>
-  </div>
-
 </nav>
-
-<main class="container">
-
-<h2 style="color:#1686b6;">Bienvenido</h2>
-
-<div class="card">
-
-<div class="header-box">
-  <div class="header-box-title">Calendario Académico</div>
-  <div class="red">Actualizá tu MAIL</div>
-
-  <div class="title">Inscripciones</div>
-  <ul>
-    <li>101 - Matemáticas</li>
-    <li>102 - Física</li>
-    <li>103 - Construcción</li>
-    <li>104 - Estructuras</li>
-    <li>105 - Geotecnia</li>
-    <li>106 - Hidráulica</li>
-    <li>107 - Transporte</li>
-    <li>108 - Gestión de Proyectos</li>
-  </ul>
-
-  <div class="title">Cursadas</div>
-  <select><option>2026 - Segundo Cuatr.</option></select>
-
-  <p><b>Inicio:</b> 18/08/2026<br>
-     <b>Fin:</b> 5/12/2026<br>
-     <b>Inscripciones:</b> 04/08 - 06/09<br>
-     <b>Correlativas:</b> hasta 19/09</p>
-
-  <div class="title">Exámenes</div>
-  <select><option>Turno 2026-12</option></select>
-
-  <p><b>Inicio:</b> 02/02/2026<br>
-     <b>Fin:</b> 28/11/2026</p>
-
-  <div class="title">Inscripciones</div>
-  <div class="exam-msg">No tenés inscripciones a exámenes vigentes para el turno seleccionado.</div>
-
-</div>
-</div>
-</main>
 
 <script>
 document.getElementById("menuBtn").addEventListener("click", ()=>{
@@ -382,7 +335,6 @@ function toggleSubmenu(id){
   s.style.display = s.style.display==="flex" ? "none" : "flex";
 }
 
-/* MENU USUARIO */
 document.getElementById("userBtn").addEventListener("click", function(e){
   e.stopPropagation();
   const menu = document.getElementById("userMenu");
